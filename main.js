@@ -1,7 +1,3 @@
-// =============================
-//  FILE: main.js
-//  PURPOSE: basic interactivity (mobile menu, smooth scroll, active nav)
-// =============================
 (function(){
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
