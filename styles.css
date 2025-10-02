@@ -1,0 +1,31 @@
+/* =============================
+  FILE: styles.css
+  PURPOSE: tiny layer for non‑Tailwind styles; keep minimal since Tailwind does the heavy lifting
+============================= */
+:root { --ring: 0 0% 9%; }
+.container { max-width: 1100px; }
+
+/* Generic elements */
+.input { width: 100%; padding: 0.75rem 0.875rem; border: 1px solid #e5e7eb; border-radius: 0.75rem; font-size: 0.95rem; }
+.input:focus { outline: none; box-shadow: 0 0 0 3px rgba(17,24,39,0.1); border-color: #111827; }
+.card { border: 1px solid #e5e7eb; border-radius: 1rem; background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,0.03); }
+.badge { display: inline-block; border-radius: 9999px; background: #111827; color: #fff; font-size: 12px; padding: 0.25rem 0.625rem; }
+.kpi-sub { color: #6b7280; font-size: 12px; }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.6rem 1rem; border-radius:.75rem; border:1px solid #e5e7eb; font-weight:500; }
+.btn:hover { background:#f3f4f6; }
+.btn-primary { background:#111827; border-color:#111827; color:#fff; }
+.btn-primary:hover { filter: brightness(0.95); }
+.btn-ghost { border-color:transparent; color:#374151; }
+
+/* Chips */
+.chip { display:inline-flex; align-items:center; border:1px solid #e5e7eb; border-radius:9999px; padding:.25rem .625rem; font-size:12px; color:#374151; background:#fff; }
+
+/* Mobile menu */
+.mobile-menu { display:none; border-top:1px solid #e5e7eb; background:#fff; }
+.mobile-menu.open { display:block; }
+
+/* Active nav link (set in JS) */
+.nav-link { color:#374151; }
+.nav-link.active { color:#111827; font-weight:600; }
