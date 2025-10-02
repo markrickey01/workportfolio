@@ -5,68 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mark Rickey — Portfolio</title>
 
-  <!-- Tailwind: CDN (no build step). If you later add a build, remove this and compile your own CSS. -->
+  <!-- Tailwind (no build step) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Optional: light theming without a build
+    // Inject your brand palette
     tailwind.config = {
       theme: {
         extend: {
           container: { center: true, screens: { lg: "1100px" } },
-          colors: { brand: { 600: "#111827" } }
+          colors: {
+            brand: {
+              orange: "#ff724f",
+              cream:  "#fef5da",
+              blue:   "#3a668c",
+              yellow: "#fdb92e"
+            }
+          }
         }
       }
     }
   </script>
 
-  <!-- Your small custom CSS (non-Tailwind). Keep minimal; utilities come from Tailwind. -->
+  <!-- Your small custom layer -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Metadata -->
   <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
 </head>
+
 <body class="bg-white text-gray-900">
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
-  <div class="container mx-auto flex h-16 items-center justify-between px-4">
-    <a href="#home" class="font-semibold tracking-tight">Mark Rickey</a>
-    <nav class="hidden gap-6 md:flex text-sm">
-      <a href="#work" class="nav-link">Work</a>
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#writing" class="nav-link">Writing</a>
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-      <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-gray-100" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/></svg>
-      </button>
-      <div class="hidden items-center gap-2 md:flex">
-        <a class="btn btn-ghost" href="#resume">Resume</a>
-        <a class="btn btn-primary" href="#contact">Get in touch</a>
+  <!-- HEADER -->
+  <header class="site-header sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+    <div class="container mx-auto flex h-16 items-center justify-between px-4">
+      <!-- Headshot + Name -->
+      <div class="flex items-center gap-3">
+        <!-- If you keep spaces in the filename, use %20; place file at /assets/... -->
+        <img src="assets/Linkedin%20Profile_Pic_Sep%202025.png"
+             alt="Mark Rickey headshot"
+             class="h-8 w-8 rounded-full object-cover ring-2 ring-white shadow-sm"
+             loading="lazy" />
+        <a href="#home" class="font-semibold tracking-tight">Mark Rickey</a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden gap-6 md:flex text-sm">
+        <a href="#work" class="nav-link hover:opacity-80">Work</a>
+        <a href="#experience" class="nav-link hover:opacity-80">Experience</a>
+        <a href="#writing" class="nav-link hover:opacity-80">Writing</a>
+        <a href="#services" class="nav-link hover:opacity-80">Services</a>
+        <a href="#contact" class="nav-link hover:opacity-80">Contact</a>
+      </nav>
+
+      <!-- Actions + Mobile toggle -->
+      <div class="flex items-center gap-2">
+        <a class="btn btn-ghost hidden md:inline-flex" href="#resume">Resume</a>
+        <a class="btn btn-primary hidden md:inline-flex" href="#contact">Get in touch</a>
+        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-brand-cream/60" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+            <path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/>
+          </svg>
+        </button>
       </div>
     </div>
+
+    <!-- Mobile menu -->
     <div id="mobileMenu" class="mobile-menu">
       <a href="#work" class="block px-4 py-3">Work</a>
       <a href="#experience" class="block px-4 py-3">Experience</a>
       <a href="#writing" class="block px-4 py-3">Writing</a>
       <a href="#services" class="block px-4 py-3">Services</a>
       <a href="#contact" class="block px-4 py-3">Contact</a>
+      <div class="px-4 py-3 flex gap-2">
+        <a class="btn btn-ghost w-full justify-center" href="#resume">Resume</a>
+        <a class="btn btn-primary w-full justify-center" href="#contact">Get in touch</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section id="home" class="bg-gray-50">
+    <!-- HERO -->
+    <section id="home" class="bg-brand-cream">
       <div class="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
         <div>
-          <span class="badge">Available for full‑time</span>
-          <h1 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">Strategic Project Manager & Public Affairs Pro</h1>
-          <p class="mt-4 text-gray-600 max-w-prose">I design and run data‑backed programs across global brands and federal missions. Ops, comms, and outcomes—no fluff.</p>
+          <span class="badge">Available for full-time</span>
+          <h1 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+            Strategic Project Manager & Public Affairs Pro
+          </h1>
+          <p class="mt-4 text-gray-700 max-w-prose">
+            I design and run data-backed programs across global brands and federal missions. Ops, comms, and outcomes—no fluff.
+          </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a class="btn btn-primary" href="#work">See work</a>
-            <a class="btn" href="#contact">Book a call</a>
+            <a class="btn btn-outline" href="#contact">Book a call</a>
           </div>
-          <div class="mt-6 flex items-center gap-4 text-sm text-gray-500">
+          <div class="mt-6 flex items-center gap-4 text-sm text-gray-600">
             <span>Indiana, USA</span><span>•</span><span>Hybrid/Remote</span>
           </div>
         </div>
@@ -91,17 +121,16 @@
       </div>
     </section>
 
-    <!-- Work -->
+    <!-- WORK -->
     <section id="work" class="section">
       <div class="container mx-auto px-4 py-16">
         <div class="mb-8 flex items-end justify-between">
           <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Featured Work</h2>
-          <a class="text-sm text-gray-700 hover:opacity-80" href="#all-work">View all →</a>
+          <a class="text-sm text-brand-blue hover:opacity-80" href="#all-work">View all →</a>
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- CARD EXAMPLE -->
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-cream to-white"></div>
             <div class="p-6">
               <h3 class="font-medium">Global Menu Optimization</h3>
               <p class="mt-1 text-sm text-gray-600">Scaled experimentation across 50+ markets.</p>
@@ -110,12 +139,12 @@
                 <span class="chip">A/B</span>
                 <span class="chip">Data</span>
               </div>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-gray-900 hover:opacity-80" href="#">Open case →</a>
+              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
           </article>
 
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-yellow to-white"></div>
             <div class="p-6">
               <h3 class="font-medium">CANES Training Support</h3>
               <p class="mt-1 text-sm text-gray-600">Ops/Comms for $88M naval program.</p>
@@ -124,12 +153,12 @@
                 <span class="chip">PMO</span>
                 <span class="chip">Comms</span>
               </div>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-gray-900 hover:opacity-80" href="#">Open case →</a>
+              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
           </article>
 
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-orange to-white"></div>
             <div class="p-6">
               <h3 class="font-medium">Association Forum Revamp</h3>
               <p class="mt-1 text-sm text-gray-600">Member growth via content + UX.</p>
@@ -138,15 +167,15 @@
                 <span class="chip">CX</span>
                 <span class="chip">SEO</span>
               </div>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-gray-900 hover:opacity-80" href="#">Open case →</a>
+              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="section bg-gray-50">
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section bg-brand-cream/40">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Experience</h2>
         <div class="space-y-6">
@@ -160,11 +189,12 @@
             </div>
             <div class="p-6 text-sm text-gray-700">
               <ul class="list-inside list-disc space-y-1">
-                <li>Directed comms for multi‑unit operations.</li>
+                <li>Directed comms for multi-unit operations.</li>
                 <li>Built battle rhythm + exec reporting.</li>
               </ul>
             </div>
           </div>
+
           <div class="card">
             <div class="border-b p-6">
               <div class="flex flex-wrap items-end justify-between gap-2">
@@ -180,6 +210,7 @@
               </ul>
             </div>
           </div>
+
           <div class="card">
             <div class="border-b p-6">
               <div class="flex flex-wrap items-end justify-between gap-2">
@@ -198,60 +229,60 @@
       </div>
     </section>
 
-    <!-- Writing -->
+    <!-- WRITING -->
     <section id="writing" class="section">
       <div class="container mx-auto px-4 py-16">
         <div class="mb-8 flex items-end justify-between">
           <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Writing</h2>
-          <a class="text-sm text-gray-700 hover:opacity-80" href="#all-posts">All posts →</a>
+          <a class="text-sm text-brand-blue hover:opacity-80" href="#all-posts">All posts →</a>
         </div>
         <div class="grid gap-4 sm:grid-cols-2">
           <article class="card">
             <div class="p-6">
               <h3 class="text-base font-medium">Ops without drama</h3>
               <p class="mt-1 text-sm text-gray-500">Short abstract that tees up the point.</p>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-gray-900 hover:opacity-80" href="#">Read →</a>
+              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Read →</a>
             </div>
           </article>
           <article class="card">
             <div class="p-6">
               <h3 class="text-base font-medium">Stakeholder mapping that actually helps</h3>
               <p class="mt-1 text-sm text-gray-500">Short abstract that tees up the point.</p>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-gray-900 hover:opacity-80" href="#">Read →</a>
+              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Read →</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="section bg-gray-50">
+    <!-- SERVICES -->
+    <section id="services" class="section bg-gradient-to-b from-white to-brand-cream/60">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Services</h2>
         <div class="grid gap-6 md:grid-cols-3">
           <div class="card">
             <div class="p-6">
               <h3 class="text-lg font-medium">Program Management</h3>
-              <p class="text-sm text-gray-500">Standing up PMO, cadences, metrics.</p>
+              <p class="text-sm text-gray-600">Standing up PMO, cadences, metrics.</p>
             </div>
           </div>
           <div class="card">
             <div class="p-6">
               <h3 class="text-lg font-medium">Public Affairs / Comms</h3>
-              <p class="text-sm text-gray-500">Narratives that align stakeholders.</p>
+              <p class="text-sm text-gray-600">Narratives that align stakeholders.</p>
             </div>
           </div>
           <div class="card">
             <div class="p-6">
               <h3 class="text-lg font-medium">Digital Optimization</h3>
-              <p class="text-sm text-gray-500">Experimentation, CRO, analytics.</p>
+              <p class="text-sm text-gray-600">Experimentation, CRO, analytics.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container mx-auto max-w-3xl px-4 py-16">
         <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Contact</h2>
@@ -263,7 +294,7 @@
           <input class="input mt-4" placeholder="Subject" required />
           <textarea class="input mt-4 min-h-[120px]" placeholder="Message" required></textarea>
           <div class="mt-6 flex items-center justify-between">
-            <div class="flex items-center gap-4 text-sm text-gray-500">
+            <div class="flex items-center gap-4 text-sm text-gray-600">
               <a href="mailto:markrickey01@gmail.com" class="hover:opacity-80">Email</a>
               <a href="https://markrickey.github.io/Mark-Rickey" target="_blank" class="hover:opacity-80">Site</a>
             </div>
@@ -274,14 +305,13 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t bg-gray-50">
-    <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-500">
+  <!-- FOOTER -->
+  <footer class="border-t bg-brand-cream/40">
+    <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-600">
       © <span id="year"></span> Mark L. Rickey
     </div>
   </footer>
 
-  <!-- Your script -->
   <script src="main.js" defer></script>
 </body>
 </html>
