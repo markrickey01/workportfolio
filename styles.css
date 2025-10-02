@@ -1,31 +1,77 @@
-/* =============================
-  FILE: styles.css
-  PURPOSE: tiny layer for non‑Tailwind styles; keep minimal since Tailwind does the heavy lifting
-============================= */
+/* ========== Base & tokens (non-Tailwind) ========== */
 :root { --ring: 0 0% 9%; }
 .container { max-width: 1100px; }
 
-/* Generic elements */
-.input { width: 100%; padding: 0.75rem 0.875rem; border: 1px solid #e5e7eb; border-radius: 0.75rem; font-size: 0.95rem; }
-.input:focus { outline: none; box-shadow: 0 0 0 3px rgba(17,24,39,0.1); border-color: #111827; }
-.card { border: 1px solid #e5e7eb; border-radius: 1rem; background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,0.03); }
-.badge { display: inline-block; border-radius: 9999px; background: #111827; color: #fff; font-size: 12px; padding: 0.25rem 0.625rem; }
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  background: #fff;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(61, 102, 140, 0.18); /* brand.blue glow */
+  border-color: #3a668c;
+}
+
+/* Cards & badges */
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+.badge {
+  display: inline-block;
+  border-radius: 9999px;
+  background: #3a668c;      /* brand.blue */
+  color: #fff;
+  font-size: 12px;
+  padding: 0.25rem 0.625rem;
+}
+.kpi { font-weight: 600; font-size: 1.375rem; }
 .kpi-sub { color: #6b7280; font-size: 12px; }
 
 /* Buttons */
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.6rem 1rem; border-radius:.75rem; border:1px solid #e5e7eb; font-weight:500; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.6rem 1rem; border-radius:.75rem; border:1px solid #e5e7eb; font-weight:600;
+  transition: filter .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+}
 .btn:hover { background:#f3f4f6; }
-.btn-primary { background:#111827; border-color:#111827; color:#fff; }
+.btn-primary { background:#3a668c; border-color:#3a668c; color:#fff; }
 .btn-primary:hover { filter: brightness(0.95); }
 .btn-ghost { border-color:transparent; color:#374151; }
+.btn-outline { background:#fff; color:#3a668c; border-color:#3a668c; }
+.btn-outline:hover { background:#fef5da; } /* brand.cream */
 
 /* Chips */
-.chip { display:inline-flex; align-items:center; border:1px solid #e5e7eb; border-radius:9999px; padding:.25rem .625rem; font-size:12px; color:#374151; background:#fff; }
+.chip {
+  display:inline-flex; align-items:center;
+  border:1px solid #e5e7eb; border-radius:9999px; padding:.25rem .625rem;
+  font-size:12px; color:#374151; background:#fff;
+}
 
 /* Mobile menu */
 .mobile-menu { display:none; border-top:1px solid #e5e7eb; background:#fff; }
 .mobile-menu.open { display:block; }
 
-/* Active nav link (set in JS) */
+/* Active nav */
 .nav-link { color:#374151; }
-.nav-link.active { color:#111827; font-weight:600; }
+.nav-link.active { color:#3a668c; font-weight:600; }
+
+/* Header gradient when scrolled */
+.site-header.scrolled {
+  background: linear-gradient(90deg, #ff724f, #fdb92e, #3a668c);
+  color: #fff;
+  border-bottom-color: transparent;
+}
+.site-header.scrolled a { color: #fff; }
+.site-header.scrolled .btn-ghost { color:#fff; }
+.site-header.scrolled .btn-primary { background:#ff724f; border-color:#ff724f; }
+
+/* Sections divider */
+.section { border-top: 1px solid #e5e7eb; }
