@@ -134,7 +134,50 @@
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
+            <!-- A/B tile swap thumbnail -->
+<div class="ab-grid grid h-40 w-full grid-cols-3 gap-1 overflow-hidden rounded-t-2xl">
+  <!-- FRIES -->
+  <div class="tile relative">
+    <div class="tile-inner">
+      <div class="tile-face front">
+        <img src="assets/menu-fries-a.jpg" alt="Fries variant A" class="thumb" />
+        <span class="ab-chip ab-a">A</span>
+      </div>
+      <div class="tile-face back">
+        <img src="assets/menu-fries-b.jpg" alt="Fries variant B" class="thumb" />
+        <span class="ab-chip ab-b">B</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BURGER -->
+  <div class="tile relative">
+    <div class="tile-inner">
+      <div class="tile-face front">
+        <img src="assets/menu-burger-a.jpg" alt="Burger variant A" class="thumb" />
+        <span class="ab-chip ab-a">A</span>
+      </div>
+      <div class="tile-face back">
+        <img src="assets/menu-burger-b.jpg" alt="Burger variant B" class="thumb" />
+        <span class="ab-chip ab-b">B</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COFFEE -->
+  <div class="tile relative">
+    <div class="tile-inner">
+      <div class="tile-face front">
+        <img src="assets/menu-coffee-a.jpg" alt="Coffee variant A" class="thumb" />
+        <span class="ab-chip ab-a">A</span>
+      </div>
+      <div class="tile-face back">
+        <img src="assets/menu-coffee-b.jpg" alt="Coffee variant B" class="thumb" />
+        <span class="ab-chip ab-b">B</span>
+      </div>
+    </div>
+  </div>
+</div>
             <div class="p-6">
               <h3 class="font-medium">Global Menu Optimization</h3>
               <p class="mt-1 text-sm text-gray-600">Scaled experimentation across 50+ markets.</p>
