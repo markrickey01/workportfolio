@@ -55,3 +55,16 @@ if (form) {
     form.reset();
   });
 }
+// A/B tile: auto-rotate one flip at a time
+(function () {
+  const tiles = Array.from(document.querySelectorAll('.ab-grid .tile'));
+  if (!tiles.length) return;
+  let i = 0;
+  const tick = () => {
+    tiles.forEach(t => t.classList.remove('is-flipped'));
+    tiles[i % tiles.length].classList.add('is-flipped');
+    i++;
+  };
+  tick();
+  setInterval(tick, 1200);
+})();
