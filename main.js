@@ -8,7 +8,7 @@ const menu = document.getElementById('mobileMenu');
 if (btn && menu) {
   btn.addEventListener('click', () => menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-}
+} 
 
 // Smooth scroll for internal anchors
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
