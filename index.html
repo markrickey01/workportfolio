@@ -5,38 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mark Rickey — Portfolio</title>
 
-  <!-- Tailwind (no build step) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CONFIG FIRST -->
   <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        container: { center: true, screens: { lg: "1100px" } },
-        colors: {
-          brand: {
-            orange: "#ff724f",
-            cream:  "#fef5da",
-            blue:   "#3a668c",
-              yellow: "#fdb92e"
+    window.tailwind = {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          container: { center: true, screens: { lg: "1100px" } },
+          colors: {
+            brand: {
+              blue:   "#3a668c",  /* primary */
+              orange: "#ff724f",  /* CTA accent */
+              cream:  "#fef5da"   /* soft bg */
             }
           }
         }
       }
-    }
+    };
   </script>
+  <!-- Then Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Your small custom layer -->
+  <!-- Your custom CSS -->
   <link rel="stylesheet" href="styles.css" />
   <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
 </head>
+
 <body class="bg-white text-gray-900">
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
   <header class="site-header sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
       <!-- Headshot + Name -->
       <div class="flex items-center gap-3">
-        <!-- If you keep spaces in the filename, use %20; place file at /assets/... -->
-        <img src="Linkedin Profile_Pic_Sep 2025.png"
+        <!-- If filename has spaces, keep URL-encoded; image is at repo root -->
+        <img src="Linkedin%20Profile_Pic_Sep%202025.png"
              alt="Mark Rickey headshot"
              class="h-8 w-8 rounded-full object-cover ring-2 ring-white shadow-sm"
              loading="lazy" />
@@ -50,12 +52,14 @@
         <a href="#writing" class="nav-link hover:opacity-80">Writing</a>
         <a href="#services" class="nav-link hover:opacity-80">Services</a>
         <a href="#contact" class="nav-link hover:opacity-80">Contact</a>
+        <a href="#resume" class="nav-link hover:opacity-80">Resume</a>
       </nav>
 
       <!-- Actions + Mobile toggle -->
       <div class="flex items-center gap-2">
         <a class="btn btn-ghost hidden md:inline-flex" href="#resume">Resume</a>
         <a class="btn btn-primary hidden md:inline-flex" href="#contact">Get in touch</a>
+
         <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-brand-cream/60" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
             <path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/>
@@ -71,6 +75,7 @@
       <a href="#writing" class="block px-4 py-3">Writing</a>
       <a href="#services" class="block px-4 py-3">Services</a>
       <a href="#contact" class="block px-4 py-3">Contact</a>
+      <a href="#resume" class="block px-4 py-3">Resume</a>
       <div class="px-4 py-3 flex gap-2">
         <a class="btn btn-ghost w-full justify-center" href="#resume">Resume</a>
         <a class="btn btn-primary w-full justify-center" href="#contact">Get in touch</a>
@@ -79,7 +84,7 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
     <section id="home" class="bg-brand-cream">
       <div class="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
         <div>
@@ -98,6 +103,7 @@
             <span>Indiana, USA</span><span>•</span><span>Hybrid/Remote</span>
           </div>
         </div>
+
         <div class="grid gap-4">
           <div class="card p-6">
             <div class="grid grid-cols-3 gap-4 text-center">
@@ -119,16 +125,17 @@
       </div>
     </section>
 
-    <!-- WORK -->
+    <!-- ================= WORK ================= -->
     <section id="work" class="section">
       <div class="container mx-auto px-4 py-16">
         <div class="mb-8 flex items-end justify-between">
           <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Featured Work</h2>
           <a class="text-sm text-brand-blue hover:opacity-80" href="#all-work">View all →</a>
         </div>
+
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-cream to-white"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
             <div class="p-6">
               <h3 class="font-medium">Global Menu Optimization</h3>
               <p class="mt-1 text-sm text-gray-600">Scaled experimentation across 50+ markets.</p>
@@ -142,7 +149,7 @@
           </article>
 
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-yellow to-white"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
             <div class="p-6">
               <h3 class="font-medium">CANES Training Support</h3>
               <p class="mt-1 text-sm text-gray-600">Ops/Comms for $88M naval program.</p>
@@ -156,7 +163,7 @@
           </article>
 
           <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gradient-to-br from-brand-orange to-white"></div>
+            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
             <div class="p-6">
               <h3 class="font-medium">Association Forum Revamp</h3>
               <p class="mt-1 text-sm text-gray-600">Member growth via content + UX.</p>
@@ -172,10 +179,11 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section bg-brand-cream/40">
+    <!-- =============== EXPERIENCE =============== -->
+    <section id="experience" class="section">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Experience</h2>
+
         <div class="space-y-6">
           <div class="card">
             <div class="border-b p-6">
@@ -227,13 +235,14 @@
       </div>
     </section>
 
-    <!-- WRITING -->
+    <!-- ================= WRITING ================= -->
     <section id="writing" class="section">
       <div class="container mx-auto px-4 py-16">
         <div class="mb-8 flex items-end justify-between">
           <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Writing</h2>
           <a class="text-sm text-brand-blue hover:opacity-80" href="#all-posts">All posts →</a>
         </div>
+
         <div class="grid gap-4 sm:grid-cols-2">
           <article class="card">
             <div class="p-6">
@@ -253,10 +262,11 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section bg-gradient-to-b from-white to-brand-cream/60">
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="section">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Services</h2>
+
         <div class="grid gap-6 md:grid-cols-3">
           <div class="card">
             <div class="p-6">
@@ -280,7 +290,20 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ================= RESUME ================= -->
+    <section id="resume" class="section">
+      <div class="container mx-auto px-4 py-16">
+        <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Resume</h2>
+        <div class="card p-6">
+          <p class="text-sm text-gray-600">
+            Add your PDF to the repo and update this link. For now this is a placeholder.
+          </p>
+          <a class="mt-4 inline-flex btn btn-outline" href="#" target="_blank" rel="noopener">Download Resume (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="section">
       <div class="container mx-auto max-w-3xl px-4 py-16">
         <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Contact</h2>
@@ -303,13 +326,14 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t bg-brand-cream/40">
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t">
     <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-600">
       © <span id="year"></span> Mark L. Rickey
     </div>
   </footer>
 
+  <!-- Your JS -->
   <script src="main.js" defer></script>
 </body>
 </html>
