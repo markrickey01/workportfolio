@@ -6,14 +6,20 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const btn = document.getElementById('mobileMenuBtn');
 const menu = document.getElementById('mobileMenu');
 if (btn && menu) {
-  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  const toggle = () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  };
+  btn.addEventListener('click', toggle);
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-} 
+  // close on resize to desktop
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768) menu.classList.remove('open'); });
+}
 
-// Smooth scroll for internal anchors
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e){
-    const id = this.getAttribute('href');
+// Smooth scroll for in-page links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
@@ -36,7 +42,7 @@ const setActive = () => {
 window.addEventListener('scroll', setActive);
 setActive();
 
-// Header: add soft shadow after scroll (color stays solid orange)
+// Header shadow after scroll
 const header = document.querySelector('.site-header');
 const setHeaderState = () => {
   if (!header) return;
@@ -46,25 +52,21 @@ const setHeaderState = () => {
 window.addEventListener('scroll', setHeaderState);
 setHeaderState();
 
-// Fake contact submit
-const form = document.getElementById('contactForm');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("Thanks — I’ll get back to you.");
-    form.reset();
-  });
-}
-// A/B tile: auto-rotate one flip at a time
+// === A/B tile: auto-rotate one flip at a time (pause on hover / hidden tab) ===
 (function () {
   const tiles = Array.from(document.querySelectorAll('.ab-grid .tile'));
   if (!tiles.length) return;
-  let i = 0;
+
+  let i = 0, timer = null;
   const tick = () => {
     tiles.forEach(t => t.classList.remove('is-flipped'));
     tiles[i % tiles.length].classList.add('is-flipped');
     i++;
   };
-  tick();
-  setInterval(tick, 1200);
+  const start = () => { if (!timer) { tick(); timer = setInterval(tick, 1200); } };
+  const stop  = () => { clearInterval(timer); timer = null; };
+
+  tiles.forEach(t => { t.addEventListener('mouseenter', stop); t.addEventListener('mouseleave', start); });
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  start();
 })();
