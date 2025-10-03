@@ -115,7 +115,7 @@
 
 .tile-face {
   position: absolute; inset: 0;
-  backface-visibility: hidden;
+  backface-visibility: hidden; 
   border-radius: .6rem;
   overflow: hidden;
   background: linear-gradient(135deg,#eee,#fafafa); /* fallback if image missing */
