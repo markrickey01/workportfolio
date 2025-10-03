@@ -6,7 +6,7 @@
 
   /* how far down the hero stays orange (96–99). higher = more orange */
   --hero-white-start:98.3%;
-}
+} 
 
 .container{max-width:1100px;}
 
