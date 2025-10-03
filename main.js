@@ -22,7 +22,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Active nav highlight on scroll
-const sections = ['#work','#experience','#writing','#services','#contact'];
+const sections = ['#work','#experience','#writing','#services','#contact','#resume'];
 const links = Array.from(document.querySelectorAll('.nav-link'));
 const setActive = () => {
   let current = null;
@@ -36,15 +36,15 @@ const setActive = () => {
 window.addEventListener('scroll', setActive);
 setActive();
 
-// Header gradient on scroll
+// Header: add soft shadow after scroll (color stays solid orange)
 const header = document.querySelector('.site-header');
-const setHeaderGradient = () => {
+const setHeaderState = () => {
   if (!header) return;
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 };
-window.addEventListener('scroll', setHeaderGradient);
-setHeaderGradient();
+window.addEventListener('scroll', setHeaderState);
+setHeaderState();
 
 // Fake contact submit
 const form = document.getElementById('contactForm');
