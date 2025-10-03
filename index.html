@@ -4,19 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mark Rickey — Portfolio</title>
+  <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
 
   <!-- Tailwind CONFIG FIRST -->
-  <script> 
-    window.tailwind = {}; 
-    tailwind.config = {
+  <script>
+    tailwind = {
       theme: {
         extend: {
           container: { center: true, screens: { lg: "1100px" } },
           colors: {
             brand: {
-              blue:   "#3a668c",  /* primary */
-              orange: "#ff724f",  /* header + hero gradient */
-              cream:  "#fef5da"   /* warm mid tone if needed */
+              blue:   "#3a668c",
+              orange: "#ff724f",
+              cream:  "#fef5da"
             }
           }
         }
@@ -26,27 +26,24 @@
   <!-- Then Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Your custom CSS -->
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 
-<body class="text-gray-900">
-  <!-- ================= HEADER (solid orange, no border) ================= -->
-  <header class="site-header sticky top-0 z-50 backdrop-blur">
+<body class="bg-white text-gray-900">
+  <!-- ================= HEADER ================= -->
+  <header class="site-header sticky top-0 z-50 backdrop-blur relative">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
-      <!-- Headshot + Name -->
       <div class="flex items-center gap-3">
-        <!-- If filename has spaces, keep URL-encoded -->
-        <img src="Linkedin%20Profile_Pic_Sep%202025.png"
-             alt="Mark Rickey headshot"
-             class="h-8 w-8 rounded-full object-cover ring-2 ring-white/80 shadow-sm"
-             loading="lazy" />
-        <a href="#home" class="font-semibold tracking-tight">Mark Rickey</a>
+        <img
+          src="Linkedin%20Profile_Pic_Sep%202025.png"
+          alt="Mark Rickey"
+          class="h-8 w-8 rounded-full object-cover ring-2 ring-white/80 shadow-sm"
+          loading="lazy" />
+        <a href="#home" class="font-semibold tracking-tight text-white">Mark Rickey</a>
       </div>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden gap-6 md:flex text-sm">
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white">
         <a href="#work" class="nav-link">Work</a>
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#writing" class="nav-link">Writing</a>
@@ -55,11 +52,10 @@
         <a href="#resume" class="nav-link">Resume</a>
       </nav>
 
-      <!-- Actions + Mobile toggle -->
       <div class="flex items-center gap-2">
         <a class="btn btn-ghost hidden md:inline-flex" href="#resume">Resume</a>
         <a class="btn btn-soft hidden md:inline-flex" href="#contact">Get in touch</a>
-        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-white/10" aria-label="Open menu">
+        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-white/10" aria-label="Open menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-white">
             <path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/>
           </svg>
@@ -67,7 +63,7 @@
       </div>
     </div>
 
-    <!-- Mobile menu -->
+    <!-- Mobile menu (overlays beneath header) -->
     <div id="mobileMenu" class="mobile-menu">
       <a href="#work" class="block px-4 py-3">Work</a>
       <a href="#experience" class="block px-4 py-3">Experience</a>
@@ -83,7 +79,7 @@
   </header>
 
   <main>
-    <!-- ================= HERO (striking orange → white gradient) ================= -->
+    <!-- ================= HERO (orange → white, extends down) ================= -->
     <section id="home">
       <div class="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
         <div>
@@ -133,143 +129,97 @@
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Global Menu Optimization -->
           <article class="card group">
-<!-- A/B tile swap thumbnail (SVG-only, no images) -->
-<div class="ab-grid grid h-40 w-full grid-cols-3 gap-1 overflow-hidden rounded-t-2xl">
-  <!-- FRIES -->
-  <div class="tile relative" aria-label="Abstract A/B tile — fries">
-    <div class="tile-inner">
-      <!-- A -->
-      <div class="tile-face front">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
-          <defs>
-            <linearGradient id="gradA1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%"  stop-color="#f3f4f6"/>
-              <stop offset="100%" stop-color="#ffffff"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#gradA1)"/>
-          <!-- bars = “fries” -->
-          <g opacity="0.9">
-            <rect x="30"  y="40" width="28" height="220" rx="8" fill="#3a668c"/>
-            <rect x="70"  y="30" width="28" height="230" rx="8" fill="#ff724f"/>
-            <rect x="110" y="55" width="28" height="205" rx="8" fill="#3a668c"/>
-            <rect x="150" y="45" width="28" height="215" rx="8" fill="#ff724f"/>
-          </g>
-          <!-- subtle dots -->
-          <g fill="#e5e7eb" opacity="0.9">
-            <circle cx="300" cy="70"  r="3"/><circle cx="330" cy="110" r="3"/><circle cx="290" cy="150" r="3"/>
-            <circle cx="350" cy="190" r="3"/><circle cx="310" cy="220" r="3"/>
-          </g>
-        </svg>
-        <span class="ab-chip ab-a">A</span>
-      </div>
-      <!-- B -->
-      <div class="tile-face back">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
-          <defs>
-            <linearGradient id="gradB1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"  stop-color="#fff"/>
-              <stop offset="100%" stop-color="#f7fafc"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#gradB1)"/>
-          <!-- swapped order + thicker accent -->
-          <g opacity="0.95">
-            <rect x="30"  y="35" width="32" height="225" rx="10" fill="#ff724f"/>
-            <rect x="74"  y="60" width="24" height="200" rx="10" fill="#3a668c"/>
-            <rect x="108" y="42" width="32" height="218" rx="10" fill="#ff724f"/>
-            <rect x="152" y="68" width="24" height="192" rx="10" fill="#3a668c"/>
-          </g>
-          <g fill="#e5e7eb" opacity="0.9">
-            <circle cx="300" cy="90"  r="3"/><circle cx="330" cy="140" r="3"/><circle cx="290" cy="180" r="3"/>
-            <circle cx="350" cy="220" r="3"/><circle cx="310" cy="240" r="3"/>
-          </g>
-        </svg>
-        <span class="ab-chip ab-b">B</span>
-      </div>
-    </div>
-  </div>
+            <!-- A/B tile swap (abstract SVGs, no images) -->
+            <div class="ab-grid grid h-40 w-full grid-cols-3 gap-1 overflow-hidden rounded-t-2xl">
+              <!-- FRIES -->
+              <div class="tile relative" aria-label="Abstract A/B tile — fries">
+                <div class="tile-inner">
+                  <div class="tile-face front">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
+                      <defs>
+                        <linearGradient id="gradA1" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#f3f4f6"/><stop offset="100%" stop-color="#ffffff"/>
+                        </linearGradient>
+                      </defs>
+                      <rect width="400" height="300" fill="url(#gradA1)"/>
+                      <g opacity="0.9">
+                        <rect x="30" y="40" width="28" height="220" rx="8" fill="#3a668c"/>
+                        <rect x="70" y="30" width="28" height="230" rx="8" fill="#ff724f"/>
+                        <rect x="110" y="55" width="28" height="205" rx="8" fill="#3a668c"/>
+                        <rect x="150" y="45" width="28" height="215" rx="8" fill="#ff724f"/>
+                      </g>
+                    </svg>
+                    <span class="ab-chip ab-a">A</span>
+                  </div>
+                  <div class="tile-face back">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
+                      <rect width="400" height="300" fill="#ffffff"/>
+                      <g opacity="0.95">
+                        <rect x="30" y="35" width="32" height="225" rx="10" fill="#ff724f"/>
+                        <rect x="74" y="60" width="24" height="200" rx="10" fill="#3a668c"/>
+                        <rect x="108" y="42" width="32" height="218" rx="10" fill="#ff724f"/>
+                        <rect x="152" y="68" width="24" height="192" rx="10" fill="#3a668c"/>
+                      </g>
+                    </svg>
+                    <span class="ab-chip ab-b">B</span>
+                  </div>
+                </div>
+              </div>
 
-  <!-- BURGER -->
-  <div class="tile relative" aria-label="Abstract A/B tile — burger">
-    <div class="tile-inner">
-      <!-- A -->
-      <div class="tile-face front">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
-          <rect width="400" height="300" fill="#ffffff"/>
-          <!-- buns -->
-          <ellipse cx="200" cy="115" rx="140" ry="40" fill="#ff724f" opacity=".25"/>
-          <ellipse cx="200" cy="190" rx="140" ry="40" fill="#3a668c" opacity=".15"/>
-          <!-- patty -->
-          <rect x="80" y="150" width="240" height="22" rx="11" fill="#3a668c"/>
-          <!-- sesame seeds -->
-          <g fill="#ff724f" opacity=".9">
-            <circle cx="140" cy="98" r="3"/><circle cx="170" cy="110" r="3"/><circle cx="210" cy="100" r="3"/><circle cx="240" cy="112" r="3"/>
-          </g>
-        </svg>
-        <span class="ab-chip ab-a">A</span>
-      </div>
-      <!-- B -->
-      <div class="tile-face back">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
-          <rect width="400" height="300" fill="#ffffff"/>
-          <!-- buns, inverted weights -->
-          <ellipse cx="200" cy="110" rx="140" ry="42" fill="#3a668c" opacity=".18"/>
-          <ellipse cx="200" cy="195" rx="140" ry="42" fill="#ff724f" opacity=".30"/>
-          <!-- double patty -->
-          <rect x="80" y="145" width="240" height="18" rx="9" fill="#ff724f"/>
-          <rect x="80" y="168" width="240" height="18" rx="9" fill="#3a668c"/>
-          <!-- sesame seeds -->
-          <g fill="#3a668c" opacity=".9">
-            <circle cx="150" cy="96" r="3"/><circle cx="185" cy="108" r="3"/><circle cx="220" cy="98" r="3"/><circle cx="255" cy="110" r="3"/>
-          </g>
-        </svg>
-        <span class="ab-chip ab-b">B</span>
-      </div>
-    </div>
-  </div>
+              <!-- BURGER -->
+              <div class="tile relative" aria-label="Abstract A/B tile — burger">
+                <div class="tile-inner">
+                  <div class="tile-face front">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
+                      <rect width="400" height="300" fill="#ffffff"/>
+                      <ellipse cx="200" cy="115" rx="140" ry="40" fill="#ff724f" opacity=".25"/>
+                      <ellipse cx="200" cy="190" rx="140" ry="40" fill="#3a668c" opacity=".15"/>
+                      <rect x="80" y="150" width="240" height="22" rx="11" fill="#3a668c"/>
+                    </svg>
+                    <span class="ab-chip ab-a">A</span>
+                  </div>
+                  <div class="tile-face back">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
+                      <rect width="400" height="300" fill="#ffffff"/>
+                      <ellipse cx="200" cy="110" rx="140" ry="42" fill="#3a668c" opacity=".18"/>
+                      <ellipse cx="200" cy="195" rx="140" ry="42" fill="#ff724f" opacity=".30"/>
+                      <rect x="80" y="145" width="240" height="18" rx="9" fill="#ff724f"/>
+                      <rect x="80" y="168" width="240" height="18" rx="9" fill="#3a668c"/>
+                    </svg>
+                    <span class="ab-chip ab-b">B</span>
+                  </div>
+                </div>
+              </div>
 
-  <!-- COFFEE -->
-  <div class="tile relative" aria-label="Abstract A/B tile — coffee">
-    <div class="tile-inner">
-      <!-- A -->
-      <div class="tile-face front">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
-          <defs>
-            <linearGradient id="steamA" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#f3f4f6"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="300" fill="url(#steamA)"/>
-          <!-- cup -->
-          <rect x="120" y="120" width="160" height="90" rx="12" fill="#3a668c"/>
-          <rect x="120" y="110" width="160" height="18" rx="9" fill="#ff724f" opacity=".9"/>
-          <!-- steam -->
-          <path d="M170 95 C165 80, 175 70, 170 55" stroke="#3a668c" stroke-width="4" fill="none" opacity=".6"/>
-          <path d="M205 95 C200 80, 210 70, 205 55" stroke="#3a668c" stroke-width="4" fill="none" opacity=".6"/>
-          <path d="M240 95 C235 80, 245 70, 240 55" stroke="#3a668c" stroke-width="4" fill="none" opacity=".6"/>
-        </svg>
-        <span class="ab-chip ab-a">A</span>
-      </div>
-      <!-- B -->
-      <div class="tile-face back">
-        <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
-          <rect width="400" height="300" fill="#ffffff"/>
-          <!-- cup with orange body, blue rim -->
-          <rect x="120" y="120" width="160" height="90" rx="12" fill="#ff724f"/>
-          <rect x="120" y="110" width="160" height="18" rx="9" fill="#3a668c" opacity=".9"/>
-          <!-- straighter steam -->
-          <path d="M170 95 L170 55" stroke="#3a668c" stroke-width="4" opacity=".5"/>
-          <path d="M205 95 L205 55" stroke="#3a668c" stroke-width="4" opacity=".5"/>
-          <path d="M240 95 L240 55" stroke="#3a668c" stroke-width="4" opacity=".5"/>
-        </svg>
-        <span class="ab-chip ab-b">B</span>
-      </div>
-    </div>
-  </div>
-</div>
+              <!-- COFFEE -->
+              <div class="tile relative" aria-label="Abstract A/B tile — coffee">
+                <div class="tile-inner">
+                  <div class="tile-face front">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant A">
+                      <defs>
+                        <linearGradient id="steamA" x1="0" y1="1" x2="0" y2="0">
+                          <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f3f4f6"/>
+                        </linearGradient>
+                      </defs>
+                      <rect width="400" height="300" fill="url(#steamA)"/>
+                      <rect x="120" y="120" width="160" height="90" rx="12" fill="#3a668c"/>
+                      <rect x="120" y="110" width="160" height="18" rx="9" fill="#ff724f" opacity=".9"/>
+                    </svg>
+                    <span class="ab-chip ab-a">A</span>
+                  </div>
+                  <div class="tile-face back">
+                    <svg class="thumb-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Variant B">
+                      <rect width="400" height="300" fill="#ffffff"/>
+                      <rect x="120" y="120" width="160" height="90" rx="12" fill="#ff724f"/>
+                      <rect x="120" y="110" width="160" height="18" rx="9" fill="#3a668c" opacity=".9"/>
+                    </svg>
+                    <span class="ab-chip ab-b">B</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="p-6">
               <h3 class="font-medium">Global Menu Optimization</h3>
@@ -308,11 +258,10 @@
       </div>
     </section>
 
-    <!-- =============== EXPERIENCE =============== -->
+    <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Experience</h2>
-
         <div class="space-y-6">
           <div class="card">
             <div class="border-b p-6">
@@ -364,7 +313,7 @@
       </div>
     </section>
 
-    <!-- ================= WRITING ================= -->
+    <!-- WRITING -->
     <section id="writing" class="section">
       <div class="container mx-auto px-4 py-16">
         <div class="mb-8 flex items-end justify-between">
@@ -391,48 +340,30 @@
       </div>
     </section>
 
-    <!-- ================= SERVICES ================= -->
+    <!-- SERVICES -->
     <section id="services" class="section">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Services</h2>
-
         <div class="grid gap-6 md:grid-cols-3">
-          <div class="card">
-            <div class="p-6">
-              <h3 class="text-lg font-medium">Program Management</h3>
-              <p class="text-sm text-gray-600">Standing up PMO, cadences, metrics.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-6">
-              <h3 class="text-lg font-medium">Public Affairs / Comms</h3>
-              <p class="text-sm text-gray-600">Narratives that align stakeholders.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="p-6">
-              <h3 class="text-lg font-medium">Digital Optimization</h3>
-              <p class="text-sm text-gray-600">Experimentation, CRO, analytics.</p>
-            </div>
-          </div>
+          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Program Management</h3><p class="text-sm text-gray-600">Standing up PMO, cadences, metrics.</p></div></div>
+          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Public Affairs / Comms</h3><p class="text-sm text-gray-600">Narratives that align stakeholders.</p></div></div>
+          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Digital Optimization</h3><p class="text-sm text-gray-600">Experimentation, CRO, analytics.</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- ================= RESUME ================= -->
+    <!-- RESUME -->
     <section id="resume" class="section">
       <div class="container mx-auto px-4 py-16">
         <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Resume</h2>
         <div class="card p-6">
-          <p class="text-sm text-gray-600">
-            Add your PDF to the repo and update this link. For now this is a placeholder.
-          </p>
+          <p class="text-sm text-gray-600">Add your PDF to the repo and update this link. Placeholder for now.</p>
           <a class="mt-4 inline-flex btn btn-outline" href="#" target="_blank" rel="noopener">Download Resume (PDF)</a>
         </div>
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
+    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container mx-auto max-w-3xl px-4 py-16">
         <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Contact</h2>
@@ -455,14 +386,13 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- FOOTER -->
   <footer>
     <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-700">
       © <span id="year"></span> Mark L. Rickey
     </div>
   </footer>
 
-  <!-- Your JS -->
-  <script src="main.js" defer></script>
+  <script src="main.js?v=10" defer></script>
 </body>
 </html>
