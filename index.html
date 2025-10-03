@@ -15,8 +15,8 @@
           colors: {
             brand: {
               blue:   "#3a668c",  /* primary */
-              orange: "#ff724f",  /* CTA accent */
-              cream:  "#fef5da"   /* soft bg */
+              orange: "#ff724f",  /* header + accent */
+              cream:  "#fef5da"   /* subtle hue in gradient */
             }
           }
         }
@@ -31,37 +31,36 @@
   <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
 </head>
 
-<body class="bg-white text-gray-900">
+<body class="text-gray-900">
   <!-- ================= HEADER ================= -->
-  <header class="site-header sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+  <header class="site-header sticky top-0 z-50 backdrop-blur">
     <div class="container mx-auto flex h-16 items-center justify-between px-4">
       <!-- Headshot + Name -->
       <div class="flex items-center gap-3">
-        <!-- If filename has spaces, keep URL-encoded; image is at repo root -->
+        <!-- If filename has spaces, keep URL-encoded -->
         <img src="Linkedin%20Profile_Pic_Sep%202025.png"
              alt="Mark Rickey headshot"
-             class="h-8 w-8 rounded-full object-cover ring-2 ring-white shadow-sm"
+             class="h-8 w-8 rounded-full object-cover ring-2 ring-white/80 shadow-sm"
              loading="lazy" />
         <a href="#home" class="font-semibold tracking-tight">Mark Rickey</a>
       </div>
 
       <!-- Desktop Nav -->
       <nav class="hidden gap-6 md:flex text-sm">
-        <a href="#work" class="nav-link hover:opacity-80">Work</a>
-        <a href="#experience" class="nav-link hover:opacity-80">Experience</a>
-        <a href="#writing" class="nav-link hover:opacity-80">Writing</a>
-        <a href="#services" class="nav-link hover:opacity-80">Services</a>
-        <a href="#contact" class="nav-link hover:opacity-80">Contact</a>
-        <a href="#resume" class="nav-link hover:opacity-80">Resume</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#writing" class="nav-link">Writing</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#resume" class="nav-link">Resume</a>
       </nav>
 
       <!-- Actions + Mobile toggle -->
       <div class="flex items-center gap-2">
         <a class="btn btn-ghost hidden md:inline-flex" href="#resume">Resume</a>
-        <a class="btn btn-primary hidden md:inline-flex" href="#contact">Get in touch</a>
-
-        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-brand-cream/60" aria-label="Open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+        <a class="btn btn-soft hidden md:inline-flex" href="#contact">Get in touch</a>
+        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-white/10" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-white">
             <path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/>
           </svg>
         </button>
@@ -78,28 +77,28 @@
       <a href="#resume" class="block px-4 py-3">Resume</a>
       <div class="px-4 py-3 flex gap-2">
         <a class="btn btn-ghost w-full justify-center" href="#resume">Resume</a>
-        <a class="btn btn-primary w-full justify-center" href="#contact">Get in touch</a>
+        <a class="btn btn-soft w-full justify-center" href="#contact">Get in touch</a>
       </div>
     </div>
   </header>
 
   <main>
     <!-- ================= HERO ================= -->
-    <section id="home" class="bg-brand-cream">
+    <section id="home">
       <div class="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
         <div>
           <span class="badge">Available for full-time</span>
           <h1 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Strategic Project Manager & Public Affairs Pro
           </h1>
-          <p class="mt-4 text-gray-700 max-w-prose">
+          <p class="mt-4 text-gray-800 max-w-prose">
             I design and run data-backed programs across global brands and federal missions. Ops, comms, and outcomes—no fluff.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a class="btn btn-primary" href="#work">See work</a>
             <a class="btn btn-outline" href="#contact">Book a call</a>
           </div>
-          <div class="mt-6 flex items-center gap-4 text-sm text-gray-600">
+          <div class="mt-6 flex items-center gap-4 text-sm text-gray-700">
             <span>Indiana, USA</span><span>•</span><span>Hybrid/Remote</span>
           </div>
         </div>
@@ -140,9 +139,7 @@
               <h3 class="font-medium">Global Menu Optimization</h3>
               <p class="mt-1 text-sm text-gray-600">Scaled experimentation across 50+ markets.</p>
               <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip">Program Mgmt</span>
-                <span class="chip">A/B</span>
-                <span class="chip">Data</span>
+                <span class="chip">Program Mgmt</span><span class="chip">A/B</span><span class="chip">Data</span>
               </div>
               <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
@@ -154,9 +151,7 @@
               <h3 class="font-medium">CANES Training Support</h3>
               <p class="mt-1 text-sm text-gray-600">Ops/Comms for $88M naval program.</p>
               <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip">Federal</span>
-                <span class="chip">PMO</span>
-                <span class="chip">Comms</span>
+                <span class="chip">Federal</span><span class="chip">PMO</span><span class="chip">Comms</span>
               </div>
               <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
@@ -168,9 +163,7 @@
               <h3 class="font-medium">Association Forum Revamp</h3>
               <p class="mt-1 text-sm text-gray-600">Member growth via content + UX.</p>
               <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip">Content</span>
-                <span class="chip">CX</span>
-                <span class="chip">SEO</span>
+                <span class="chip">Content</span><span class="chip">CX</span><span class="chip">SEO</span>
               </div>
               <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
             </div>
@@ -327,8 +320,8 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="border-t">
-    <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-600">
+  <footer>
+    <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-700">
       © <span id="year"></span> Mark L. Rickey
     </div>
   </footer>
