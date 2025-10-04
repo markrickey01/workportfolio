@@ -84,3 +84,10 @@
 /* A/B chips */
 .ab-chip{position:absolute; top:.4rem; left:.4rem; font-size:11px; font-weight:700; padding:.15rem .45rem; border-radius:9999px; color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.15);}
 .ab-a{background:var(--brand-blue);} .ab-b{background:var(--brand-orange);}
+.dock-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: .6rem;
+}
