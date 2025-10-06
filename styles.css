@@ -217,3 +217,54 @@ input,button,textarea,select{font:inherit}
 
 /* Optional: tighter card visuals */
 .card-body { padding: 1rem 1rem 1.25rem; }
+/* ================== CARD MEDIA HARD-CLAMP (transform-safe) ================== */
+/* 1) Make the card itself a clipping mask that survives transforms */
+.card {
+  --card-r: 1rem;                     /* keep in sync with your card radius */
+  border-radius: var(--card-r) !important;
+  overflow: hidden;                    /* modern browsers */
+  overflow: clip;                      /* spec version */
+  position: relative;
+  /* transform-safe clipping for WebKit & flip tiles */
+  -webkit-mask-image: radial-gradient(#000 100%, #000 100%);
+  -webkit-mask-composite: source-over;
+  mask-image: radial-gradient(#000 100%, #000 100%);
+  clip-path: inset(0 round var(--card-r)); /* fallback + transform-safe */
+}
+
+/* 2) Normalize whatever the first visual thing is to be our media box */
+.card > :is(img, picture, video, svg, .card-media, .dock-img, .tile, .tile-face):first-child {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9;                /* change to 4/3 or 1/1 if you want */
+  border-bottom: 1px solid #e5e7eb;
+  /* ensure it also clips itself (for nested transforms like .tile) */
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  clip-path: inset(0 round var(--card-r));
+  -webkit-mask-image: radial-gradient(#000 100%, #000 100%);
+}
+
+/* 3) Force the actual pixels to fill & crop (no distortion) */
+.card > :is(img, picture, video, svg):first-child,
+.card .card-media > :is(img, picture > img, video),
+.card .tile-face:first-child :is(img, svg) {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* 4) If you used background-image instead of <img> */
+.card > .bg:first-child,
+.card .card-media.bg,
+.card .tile-face.bg {
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100% !important;
+}
+
+/* 5) Optional: square or golden options */
+.card.media-square  > :first-child { aspect-ratio: 1 / 1; }
+.card.media-golden  > :first-child { aspect-ratio: 1.618 / 1; }
