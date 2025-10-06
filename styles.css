@@ -164,3 +164,56 @@ input,button,textarea,select{font:inherit}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+/* --- CARD-SAFE MEDIA: hard clamp --- */
+
+/* Make the card itself the clipping mask */
+.card {
+  border-radius: 1rem;
+  overflow: hidden;                 /* <= the key */
+  position: relative;
+}
+
+/* A predictable media box at the top of each card */
+.card-media,
+.card > img:first-child,
+.card .dock-img:first-child,
+.card .tile-face:first-child {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;             /* pick your ratio */
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Anything inside that media box fills & crops (no distortion) */
+.card-media img,
+.card-media picture > img,
+.card > img:first-child,
+.card .dock-img:first-child,
+.card .tile-face:first-child img,
+.card .tile-face:first-child .thumb-svg,
+.card .tile-face:first-child svg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+  border-radius: 0;                  /* card handles rounding */
+}
+
+/* If you’re using a .tile / .tile-face stack, match the rounding + clip */
+.tile-face {
+  border-radius: inherit !important;
+  overflow: hidden !important;
+}
+
+/* If a background-image is used instead of <img>, force it to behave */
+.card-media.bg,
+.card.bg-cover,
+.card .tile-face.bg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Optional: tighter card visuals */
+.card-body { padding: 1rem 1rem 1.25rem; }
