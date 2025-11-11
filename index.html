@@ -1,329 +1,156 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mark Rickey — Portfolio</title>
-  <meta name="description" content="Strategic Project Manager & Public Affairs professional — portfolio of work, experience, and writing." />
+import { useState } from "react";
 
-  <!-- Tailwind CONFIG FIRST -->
-  <script>
-    tailwind = {
-      theme: {
-        extend: {
-          container: { center: true, screens: { lg: "1100px" } },
-          colors: {
-            brand: {
-              blue:   "#3a668c",
-              orange: "#ff724f",
-              cream:  "#fef5da"
-            }
-          }
-        }
-      }
-    };
-  </script>
-  <!-- Then Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+export default function SitePreview() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const events = [
+    { date: "Dec 7", title: "Holiday Window Walk", meta: "Downtown • 6–9 PM" },
+    { date: "Jan 18", title: "Coffee & Commerce – Live", meta: "234 Main • 8 AM" },
+    { date: "Feb 14", title: "Candlelight on Main", meta: "Main Street • 7 PM" },
+  ];
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css?v=11" />
-<link rel="stylesheet" href="styles.css?v=20251005-1">
-</head>
+  return (
+    <div className="min-h-screen bg-stone-50 text-slate-900">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-200 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+          <a href="#" className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-amber-700 text-amber-700 font-serif">K</span>
+            <span className="leading-tight">
+              <span className="block font-serif text-lg tracking-wide">Kendallville</span>
+              <span className="block text-[10px] uppercase tracking-[0.2em] text-slate-500">Main Street</span>
+            </span>
+          </a>
+          <nav className="hidden items-center gap-6 md:flex">
+            <a href="#events" className="text-xs uppercase tracking-[0.2em] hover:opacity-80">Events</a>
+            <a href="#host" className="text-xs uppercase tracking-[0.2em] hover:opacity-80">Host</a>
+            <a href="#dashboard" className="text-xs uppercase tracking-[0.2em] hover:opacity-80">Dashboard</a>
+            <a href="#visit" className="rounded-full border border-amber-700 px-4 py-2 text-xs uppercase tracking-[0.2em]">Visit</a>
+          </nav>
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-sm">Menu</button>
+        </div>
+        {menuOpen && (
+          <div className="border-t border-zinc-200 bg-white md:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col p-4 text-sm">
+              <a href="#events" className="py-2">Events</a>
+              <a href="#host" className="py-2">Host</a>
+              <a href="#dashboard" className="py-2">Dashboard</a>
+              <a href="#visit" className="py-2">Visit</a>
+            </div>
+          </div>
+        )}
+      </header>
 
-<body class="bg-white text-gray-900">
-  <!-- ================= HEADER ================= -->
-  <header class="site-header sticky top-0 z-50 backdrop-blur relative">
-    <div class="container mx-auto flex h-16 items-center justify-between px-4">
-      <div class="flex items-center gap-3">
-        <img
-          src="Linkedin%20Profile_Pic_Sep%202025.png"
-          alt="Mark Rickey"
-          class="h-8 w-8 rounded-full object-cover ring-2 ring-white/80 shadow-sm"
-          loading="lazy" />
-        <a href="#home" class="font-semibold tracking-tight text-white">Mark Rickey</a>
-      </div>
+      <main className="pt-14">
+        <section className="relative">
+          <div className="relative h-[70vh] w-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2000&auto=format&fit=crop" alt="Historic main street" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent" />
+            <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end px-4 pb-16">
+              <div className="max-w-2xl">
+                <p className="text-xs uppercase tracking-[0.25em] text-amber-200">Est. 1880s</p>
+                <h1 className="mt-1 font-serif text-4xl text-white sm:text-5xl">Kendallville Main Street</h1>
+                <p className="mt-3 text-white/90">Boutique-community experiences in a walkable historic district. Markets, workspace, and culture that feel handcrafted.</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a href="#events" className="rounded-full border border-amber-400 px-5 py-2 text-xs uppercase tracking-[0.2em] text-white">See Events</a>
+                  <a href="#host" className="rounded-full bg-white px-5 py-2 text-xs uppercase tracking-[0.2em] text-slate-900">Host an Event</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm text-white">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#writing" class="nav-link">Writing</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="#resume" class="nav-link">Resume</a>
-      </nav>
+        <section className="mx-auto max-w-6xl px-4 py-14">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-600">Our Promise</p>
+            <h2 className="mt-2 font-serif text-3xl">Stewardship of place — investment in people</h2>
+            <p className="mt-3 text-slate-700">We preserve the character of Main Street while building modern experiences: seasonal markets, creative workspace, and cultural programming.</p>
+          </div>
+        </section>
 
-      <div class="flex items-center gap-2">
-        <a class="btn btn-ghost hidden md:inline-flex" href="#resume">Resume</a>
-        <a class="btn btn-soft hidden md:inline-flex" href="#contact">Get in touch</a>
-        <button id="mobileMenuBtn" class="md:hidden rounded-lg p-2 hover:bg-white/10" aria-label="Open menu" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 text-white">
-            <path d="M3.75 5.25h16.5v1.5H3.75zm0 6h16.5v1.5H3.75zm0 6h16.5v1.5H3.75z"/>
-          </svg>
-        </button>
-      </div>
+        <section id="events" className="mx-auto max-w-6xl px-4 py-12">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl">Upcoming Events</h3>
+            <a href="#" className="text-xs uppercase tracking-[0.2em] underline underline-offset-8">Full Calendar</a>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {events.map((e) => (
+              <div key={e.title} className="flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div>
+                  <div className="font-serif text-lg">{e.title}</div>
+                  <div className="text-sm text-slate-600">{e.meta}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">Date</div>
+                  <div className="font-serif text-lg">{e.date}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="host" className="border-y border-zinc-200 bg-white/70">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 py-14 md:grid-cols-2">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-600">234 Main</p>
+              <h3 className="mt-1 font-serif text-2xl">Host an Event</h3>
+              <p className="mt-3 text-slate-700">Markets, performances, civic roundtables. Tell us your concept and preferred dates; we’ll follow up with next steps.</p>
+              <a href="#" className="mt-5 inline-block rounded-full bg-slate-900 px-5 py-2 text-xs uppercase tracking-[0.2em] text-white">Open Form</a>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border border-zinc-200">
+              <img src="https://images.unsplash.com/photo-1518593922543-8b1ef1142e5e?q=80&w=1400&auto=format&fit=crop" alt="Workspace and studio" className="h-full w-full object-cover" />
+            </div>
+          </div>
+        </section>
+
+        <section id="dashboard" className="mx-auto max-w-6xl px-4 py-14">
+          <div className="mb-6 flex items-end justify-between">
+            <h3 className="font-serif text-2xl">Downtown Snapshot</h3>
+            <span className="text-xs uppercase tracking-[0.2em] text-slate-500">Boards & Directors</span>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Monthly Foot Traffic</div>
+              <div className="mt-1 font-serif text-3xl">12,480</div>
+              <div className="mt-3 h-16 w-full bg-gradient-to-r from-amber-200 to-amber-400" />
+            </div>
+            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Volunteer Hours</div>
+              <div className="mt-1 font-serif text-3xl">642</div>
+              <div className="mt-3 grid grid-cols-6 gap-1">
+                {Array.from({ length: 24 }).map((_, i) => (
+                  <div key={i} className={`h-3 ${i < 18 ? "bg-slate-900" : "bg-zinc-200"}`} />
+                ))}
+              </div>
+            </div>
+            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-500">Events YTD</div>
+              <div className="mt-1 font-serif text-3xl">27</div>
+              <div className="mt-3 flex items-end gap-1">
+                {[8, 5, 6, 7, 10, 12].map((v, i) => (
+                  <div key={i} style={{ height: `${v * 6}px` }} className="w-6 bg-amber-500" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="visit" className="border-t border-zinc-200 bg-white/70">
+          <div className="mx-auto max-w-6xl px-4 py-12 text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-600">Visit</p>
+            <h3 className="mt-1 font-serif text-2xl">200 S Main St, Kendallville, IN 46755</h3>
+            <p className="mt-2 text-slate-700">Free street parking. 30 minutes from Fort Wayne via I‑69.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-zinc-200">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-8">
+          <div className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-full border border-amber-700 text-amber-700 font-serif">K</span>
+            <span className="font-serif">Kendallville Main Street</span>
+          </div>
+          <div className="text-xs text-slate-500">© {new Date().getFullYear()} Kendallville Main Street</div>
+        </div>
+      </footer>
     </div>
-
-    <!-- Mobile menu (overlays beneath header) -->
-    <div id="mobileMenu" class="mobile-menu">
-      <a href="#work" class="block px-4 py-3">Work</a>
-      <a href="#experience" class="block px-4 py-3">Experience</a>
-      <a href="#writing" class="block px-4 py-3">Writing</a>
-      <a href="#services" class="block px-4 py-3">Services</a>
-      <a href="#contact" class="block px-4 py-3">Contact</a>
-      <a href="#resume" class="block px-4 py-3">Resume</a>
-      <div class="px-4 py-3 flex gap-2">
-        <a class="btn btn-ghost w-full justify-center" href="#resume">Resume</a>
-        <a class="btn btn-soft w-full justify-center" href="#contact">Get in touch</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- ================= HERO (orange → white, extends down) ================= -->
-    <section id="home">
-      <div class="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
-        <div>
-          <span class="badge">Available for full-time</span>
-          <h1 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
-            Strategic Project Manager & Public Affairs Pro
-          </h1>
-          <p class="mt-4 text-gray-800 max-w-prose">
-            I design and run data-backed programs across global brands and federal missions. Ops, comms, and outcomes—no fluff.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="btn btn-primary" href="#work">See work</a>
-            <a class="btn btn-outline" href="#contact">Book a call</a>
-          </div>
-          <div class="mt-6 flex items-center gap-4 text-sm text-gray-800">
-            <span>Indiana, USA</span><span>•</span><span>Hybrid/Remote</span>
-          </div>
-        </div>
-
-        <div class="grid gap-4">
-          <div class="card p-6">
-            <div class="grid grid-cols-3 gap-4 text-center">
-              <div><div class="kpi">8+</div><div class="kpi-sub">Years leading programs</div></div>
-              <div><div class="kpi">$88M+</div><div class="kpi-sub">Programs influenced</div></div>
-              <div><div class="kpi">100+</div><div class="kpi-sub">Stakeholders aligned</div></div>
-            </div>
-          </div>
-          <div class="card p-6">
-            <h3 class="text-base font-medium">Focus Areas</h3>
-            <p class="mt-1 text-sm text-gray-500">Pick a lane to explore.</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">Work</span>
-              <span class="chip">Ops</span>
-              <span class="chip">Comms</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= WORK ================= -->
-    <section id="work" class="section">
-      <div class="container mx-auto px-4 py-16">
-        <div class="mb-8 flex items-end justify-between">
-          <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Featured Work</h2>
-          <a class="text-sm text-brand-blue hover:opacity-80" href="#all-work">View all →</a>
-        </div>
-
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Global Menu Optimization -->
-          <article class="card group">
-            <!-- header media -->
-            <div class="ab-grid grid h-40 w-full grid-cols-3 grid-rows-1 gap-1 overflow-hidden rounded-t-2xl">
-              <div class="tile relative" aria-label="Fries">
-                <img class="dock-img" src="./FRIES.png" alt="Fries" />
-              </div>
-              <div class="tile relative" aria-label="Burger">
-                <img class="dock-img" src="./BRGR.png" alt="Burger" />
-              </div>
-              <div class="tile relative" aria-label="Drinks">
-                <img class="dock-img" src="./DRANKS.png" alt="Drinks" />
-              </div>
-            </div>
-
-            <!-- body -->
-            <div class="p-6">
-              <h3 class="font-medium">Global Menu Optimization</h3>
-              <p class="mt-1 text-sm text-gray-600">Scaled experimentation across 50+ markets.</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip">Program Mgmt</span><span class="chip">A/B</span><span class="chip">Data</span>
-              </div>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
-            </div>
-          </article>
-
-          <article class="card group">
-  <!-- header image -->
-  <div class="h-40 w-full overflow-hidden rounded-t-2xl">
-    <img class="dock-img" src="./DATA.png" alt="CANES Training Support graphic">
-  </div>
-
-  <!-- body -->
-  <div class="p-6">
-    <h3 class="font-medium">CANES Training Support</h3>
-    <p class="mt-1 text-sm text-gray-600">Ops/Comms for $88M naval program.</p>
-    <div class="mt-3 flex flex-wrap gap-2">
-      <span class="chip">Federal</span>
-      <span class="chip">PMO</span>
-      <span class="chip">Comms</span>
-    </div>
-    <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
-  </div>
-</article>
-          <article class="card group">
-            <div class="h-40 w-full rounded-t-2xl bg-gray-100"></div>
-            <div class="p-6">
-              <h3 class="font-medium">Association Forum Revamp</h3>
-              <p class="mt-1 text-sm text-gray-600">Member growth via content + UX.</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip">Content</span><span class="chip">CX</span><span class="chip">SEO</span>
-              </div>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Open case →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="container mx-auto px-4 py-16">
-        <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Experience</h2>
-        <div class="space-y-6">
-          <div class="card">
-            <div class="border-b p-6">
-              <div class="flex flex-wrap items-end justify-between gap-2">
-                <h3 class="text-lg font-medium">Public Affairs Project Manager</h3>
-                <span class="text-sm text-gray-500">2017–2025</span>
-              </div>
-              <p class="text-sm text-gray-500">U.S. Army</p>
-            </div>
-            <div class="p-6 text-sm text-gray-700">
-              <ul class="list-inside list-disc space-y-1">
-                <li>Directed comms for multi-unit operations.</li>
-                <li>Built battle rhythm + exec reporting.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="border-b p-6">
-              <div class="flex flex-wrap items-end justify-between gap-2">
-                <h3 class="text-lg font-medium">Digital Optimization Supervisor</h3>
-                <span class="text-sm text-gray-500">2021–2023</span>
-              </div>
-              <p class="text-sm text-gray-500">McDonald’s Global HQ</p>
-            </div>
-            <div class="p-6 text-sm text-gray-700">
-              <ul class="list-inside list-disc space-y-1">
-                <li>Led global experimentation program.</li>
-                <li>Partnered with product + markets.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="border-b p-6">
-              <div class="flex flex-wrap items-end justify-between gap-2">
-                <h3 class="text-lg font-medium">Manager, Digital Marketing</h3>
-                <span class="text-sm text-gray-500">2019–2021</span>
-              </div>
-              <p class="text-sm text-gray-500">Association Forum</p>
-            </div>
-            <div class="p-6 text-sm text-gray-700">
-              <ul class="list-inside list-disc space-y-1">
-                <li>Drove member growth via content + UX.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WRITING -->
-    <section id="writing" class="section">
-      <div class="container mx-auto px-4 py-16">
-        <div class="mb-8 flex items-end justify-between">
-          <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Writing</h2>
-          <a class="text-sm text-brand-blue hover:opacity-80" href="#all-posts">All posts →</a>
-        </div>
-
-        <div class="grid gap-4 sm:grid-cols-2">
-          <article class="card">
-            <div class="p-6">
-              <h3 class="text-base font-medium">Ops without drama</h3>
-              <p class="mt-1 text-sm text-gray-500">Short abstract that tees up the point.</p>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Read →</a>
-            </div>
-          </article>
-          <article class="card">
-            <div class="p-6">
-              <h3 class="text-base font-medium">Stakeholder mapping that actually helps</h3>
-              <p class="mt-1 text-sm text-gray-500">Short abstract that tees up the point.</p>
-              <a class="mt-4 inline-flex items-center text-sm font-medium text-brand-blue hover:opacity-80" href="#">Read →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section">
-      <div class="container mx-auto px-4 py-16">
-        <h2 class="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Services</h2>
-        <div class="grid gap-6 md:grid-cols-3">
-          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Program Management</h3><p class="text-sm text-gray-600">Standing up PMO, cadences, metrics.</p></div></div>
-          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Public Affairs / Comms</h3><p class="text-sm text-gray-600">Narratives that align stakeholders.</p></div></div>
-          <div class="card"><div class="p-6"><h3 class="text-lg font-medium">Digital Optimization</h3><p class="text-sm text-gray-600">Experimentation, CRO, analytics.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESUME -->
-    <section id="resume" class="section">
-      <div class="container mx-auto px-4 py-16">
-        <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Resume</h2>
-        <div class="card p-6">
-          <p class="text-sm text-gray-600">Add your PDF to the repo and update this link. Placeholder for now.</p>
-          <a class="mt-4 inline-flex btn btn-outline" href="#" target="_blank" rel="noopener">Download Resume (PDF)</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container mx-auto max-w-3xl px-4 py-16">
-        <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Contact</h2>
-        <form class="card p-6" id="contactForm">
-          <div class="grid gap-4 md:grid-cols-2">
-            <input class="input" placeholder="Your name" required />
-            <input class="input" type="email" placeholder="Email" value="markrickey01@gmail.com" required />
-          </div>
-          <input class="input mt-4" placeholder="Subject" required />
-          <textarea class="input mt-4 min-h-[120px]" placeholder="Message" required></textarea>
-          <div class="mt-6 flex items-center justify-between">
-            <div class="flex items-center gap-4 text-sm text-gray-600">
-              <a href="mailto:markrickey01@gmail.com" class="hover:opacity-80">Email</a>
-              <a href="https://markrickey.github.io/Mark-Rickey" target="_blank" class="hover:opacity-80">Site</a>
-            </div>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container mx-auto px-4 py-10 text-center text-sm text-gray-700">
-      © <span id="year"></span> Mark L. Rickey
-    </div>
-  </footer>
-
-  <script src="main.js?v=11" defer></script>
-</body>
-</html>
+  );
+}
