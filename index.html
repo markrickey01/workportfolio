@@ -21,11 +21,9 @@
       min-height: 100vh; 
       background: #f6f4ef; 
       color: #0f1e2e; 
-      /* We use 'Inter' as the base font */
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; 
     }
     .serif { 
-      /* We use 'Playfair Display' for the luxury feel */
       font-family: "Playfair Display", Georgia, serif; 
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
@@ -48,9 +46,30 @@
     
     /* Hero Section */
     .hero { position:relative; height:70vh; overflow:hidden; }
-    .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .hero .veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,15,20,.65), rgba(10,15,20,.35), transparent); }
-    .hero .inner { position:relative; height:100%; display:flex; align-items:flex-end; }
+    
+    /* This new rule styles the video */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* This makes the video cover the area */
+      z-index: 1; /* Puts it behind the text */
+    }
+    
+    .hero .veil { 
+      position:absolute; 
+      inset:0; 
+      background:linear-gradient(to top, rgba(10,15,20,.65), rgba(10,15,20,.35), transparent); 
+      z-index: 2; /* Puts the veil on top of the video */
+    }
+    .hero .inner { 
+      position:relative; 
+      height:100%; 
+      display:flex; 
+      align-items:flex-end; 
+      z-index: 3; /* Puts the text on top of the veil */
+    }
     .tag { font-size:12px; text-transform:uppercase; letter-spacing:.25em; color:#ead7a0; }
     .h1 { margin:.25rem 0 0; font-size:38px; color:#fff; }
     @media (min-width:640px){ .h1 { font-size:48px; } }
@@ -111,204 +130,4 @@
           <a href="#dashboard">Dashboard</a>
           <a href="#visit" class="cta">Visit</a>
         </nav>
-        <button class="menuBtn" id="mobile-menu-button">Menu</button>
-      </div>
-      <div class="mobile" id="mobile-menu">
-        <div class="container" style="padding: 8px 16px;">
-          <a href="#events">Events</a>
-          <a href="#host">Host</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#visit">Visit</a>
-        </div>
-      </div>
-    </header>
-
-    <main style="padding-top: 56px;">
-      <section class="hero">
-        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2000&auto=format&fit=crop" alt="Historic main street" />
-        <div class="veil"></div>
-        <div class="container inner" style="padding-bottom: 64px;">
-          <div style="max-width: 680px;">
-            <p class="tag">Est. 1880s</p>
-            <h1 class="h1 serif">Kendallville Main Street</h1>
-            <p class="heroSub">Boutique-community experiences in a walkable historic district. Markets, workspace, and culture that feel handcrafted.</p>
-            <div class="btnRow">
-              <a href="#events" class="btn btnOutline">See Events</a>
-              <a href="#host" class="btn btnSolid">Host an Event</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container center">
-          <p class="eyebrow">Our Promise</p>
-          <h2 class="h2 serif">Stewardship of place — investment in people</h2>
-          <p class="lead">We preserve the character of Main Street while building modern experiences: seasonal markets, creative workspace, and cultural programming.</p>
-        </div>
-      </section>
-
-      <section id="events" class="section">
-        <div class="container" style="margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between;">
-          <h3 class="serif" style="font-size: 24px;">Upcoming Events</h3>
-          <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">Full Calendar</a>
-        </div>
-        
-        <div class="container grid cols3">
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Holiday Window Walk</div>
-              <div class="cardMeta">Downtown • 6–9 PM</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">Dec 7</div>
-            </div>
-          </div>
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Coffee & Commerce – Live</div>
-              <div class="cardMeta">234 Main • 8 AM</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">Jan 18</div>
-            </div>
-          </div>
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Candlelight on Main</div>
-              <div class="cardMeta">Main Street • 7 PM</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">Feb 14</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="host" class="section" style="border-top: 1px solid #e6e0d6; border-bottom: 1px solid #e6e0d6; background: rgba(255,255,255,.75);">
-        <div class="container" style="display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center;">
-          <div>
-            <p class="eyebrow">234 Main</p>
-            <h3 class="serif" style="font-size: 24px;">Host an Event</h3>
-            <p class="lead">Markets, performances, civic roundtables. Tell us your concept and preferred dates; we’ll follow up with next steps.</p>
-            <a href="#" class="btn btnSolid" style="margin-top: 12px; display: inline-block;">Open Form</a>
-          </div>
-          <div style="position: relative; overflow: hidden; border-radius: 16px; border: 1px solid #e6e0d6;">
-            <img src="https://images.unsplash.com/photo-1518593922543-8b1ef1142e5e?q=80&w=1400&auto=format&fit=crop" alt="Workspace and studio" style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-        </div>
-      </section>
-
-      <section id="dashboard" class="section">
-        <div class="container" style="margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between;">
-          <h3 class="serif" style="font-size: 24px;">Downtown Snapshot</h3>
-          <span class="label">Boards & Directors</span>
-        </div>
-        <div class="container snapshot">
-          <div class="kpi">
-            <div class="label">Monthly Foot Traffic</div>
-            <div class="kpiValue serif">12,480</div>
-            <div class="bar"></div>
-          </div>
-          <div class="kpi">
-            <div class="label">Volunteer Hours</div>
-            <div class="kpiValue serif">642</div>
-            <div class="dots">
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-            </div>
-          </div>
-          <div class="kpi">
-            <div class="label">Events YTD</div>
-            <div class="kpiValue serif">27</div>
-            <div class="bars">
-              <div class="barCol" style="height: 48px;"></div>
-              <div class="barCol" style="height: 30px;"></div>
-              <div class="barCol" style="height: 36px;"></div>
-              <div class="barCol" style="height: 42px;"></div>
-              <div class="barCol" style="height: 60px;"></div>
-              <div class="barCol" style="height: 72px;"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="visit" class="visit">
-        <div class="container">
-          <p class="eyebrow">Visit</p>
-          <h3 class="serif" style="font-size: 24px; margin-top: 4px;">200 S Main St, Kendallville, IN 46755</h3>
-          <p class="lead" style="margin-top: 8px;">Free street parking. 30 minutes from Fort Wayne via I‑69.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span class="monogram serif">K</span>
-          <span class="serif">Kendallville Main Street</span>
-        </div>
-        <div class="label" id="copyright-year">© 2025 Kendallville Main Street</div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // This waits for the page to load before running any code
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // --- Mobile Menu Toggle ---
-      const menuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      // When the button is clicked, show or hide the menu
-      menuButton.addEventListener('click', function() {
-        if (mobileMenu.style.display === 'block') {
-          mobileMenu.style.display = 'none';
-        } else {
-          mobileMenu.style.display = 'block';
-        }
-      });
-
-      // --- Smooth Scrolling for Links ---
-      const links = document.querySelectorAll('a[href^="#"]');
-      
-      links.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          const href = link.getAttribute('href');
-          
-          // Don't scroll for a simple "#" link
-          if (href.length <= 1) {
-            return;
-          }
-
-          e.preventDefault(); // Stop the page from "jumping"
-          const targetElement = document.querySelector(href);
-          
-          if (targetElement) {
-            // Scroll smoothly to the section
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
-            // Also, hide the mobile menu if it's open
-            mobileMenu.style.display = 'none';
-          }
-        });
-      });
-
-      // --- Dynamic Copyright Year ---
-      const copyrightElement = document.getElementById('copyright-year');
-      copyrightElement.textContent = `© ${new Date().getFullYear()} Kendallville Main Street`;
-    });
-  </script>
-
-</body>
-</html>
+        <button class="menuBtn" id="mobile-menu-
