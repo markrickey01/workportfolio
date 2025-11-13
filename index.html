@@ -10,6 +10,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
+    /* News carousel */
+.newsShell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.newsCard {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.newsNav {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #e6e0d6;
+  background: #fff;
+  color: #5f6b76;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(15,30,46,.06);
+}
+
+.newsNav:hover {
+  background: #f6f0e0;
+}
+
+.newsDots {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.newsDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #d4c8b4;
+  cursor: pointer;
+}
+
+.newsDot.active {
+  background: #0f1e2e;
+}
+
     /* Scroll progress line */
 .scroll-progress {
   position: fixed;
@@ -333,6 +384,33 @@
           </div>
         </div>
       </section>
+</section> <!-- end of #events section -->
+
+<section id="news" class="section" style="padding: 32px 0; border-top: 1px solid #e6e0d6;">
+  <div class="container">
+    <div style="margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between;">
+      <h3 class="serif" style="font-size: 24px;">News & Announcements</h3>
+      <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">View All</a>
+    </div>
+
+    <div class="newsShell">
+      <button class="newsNav newsPrev" type="button" aria-label="Previous story">‹</button>
+
+      <div class="card newsCard" id="news-card">
+        <!-- JS will inject active story -->
+      </div>
+
+      <button class="newsNav newsNext" type="button" aria-label="Next story">›</button>
+    </div>
+
+    <div class="newsDots" id="news-dots">
+      <!-- JS will inject dots -->
+    </div>
+  </div>
+</section>
+
+<section id="host" class="section" style="border-top: 1px solid #e6e0d6; border-bottom: 1px solid #e6e0d6; background: rgba(255,255,255,.75);">
+  <!-- existing host content -->
 
       <section id="host" class="section" style="border-top: 1px solid #e6e0d6; border-bottom: 1px solid #e6e0d6; background: rgba(255,255,255,.75);">
         <div class="container" style="display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center;">
@@ -651,6 +729,80 @@
       const eventsYtdEl = document.getElementById('events-ytd-count');
       if (eventsYtdEl) {
         eventsYtdEl.textContent = events.length.toString();
+      }
+            // --- NEWS CAROUSEL ---
+      const newsItems = [
+        {
+          title: "HDK Welcomes New Executive Director",
+          date: "Nov 12, 2025",
+          summary: "Kendallville Main Street announces new leadership to advance downtown revitalization.",
+          link: "#"
+        },
+        {
+          title: "Coffee & Commerce Launches New Podcast Studio",
+          date: "Nov 4, 2025",
+          summary: "Local leaders, entrepreneurs, and students collaborate on storytelling and economic insights.",
+          link: "#"
+        },
+        {
+          title: "Holiday Window Walk Applications Open",
+          date: "Oct 28, 2025",
+          summary: "Businesses can now register to participate in the 2025 Holiday Window Walk.",
+          link: "#"
+        }
+      ];
+
+      const newsCardEl = document.getElementById('news-card');
+      const newsDotsEl = document.getElementById('news-dots');
+      const prevBtn = document.querySelector('.newsPrev');
+      const nextBtn = document.querySelector('.newsNext');
+
+      let newsIndex = 0;
+
+      function renderNews() {
+        if (!newsCardEl) return;
+        const item = newsItems[newsIndex];
+
+        newsCardEl.innerHTML = `
+          <div class="label" style="margin-bottom: 6px;">${item.date}</div>
+          <div class="serif" style="font-size: 18px; margin-bottom: 6px;">${item.title}</div>
+          <div class="cardMeta" style="margin-bottom: 12px;">${item.summary}</div>
+          <a href="${item.link}" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 6px;">Read More</a>
+        `;
+
+        // dots
+        if (newsDotsEl) {
+          newsDotsEl.innerHTML = '';
+          newsItems.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.className = 'newsDot' + (idx === newsIndex ? ' active' : '');
+            dot.addEventListener('click', () => {
+              newsIndex = idx;
+              renderNews();
+            });
+            newsDotsEl.appendChild(dot);
+          });
+        }
+      }
+
+      if (prevBtn && nextBtn && newsItems.length) {
+        prevBtn.addEventListener('click', () => {
+          newsIndex = (newsIndex - 1 + newsItems.length) % newsItems.length;
+          renderNews();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          newsIndex = (newsIndex + 1) % newsItems.length;
+          renderNews();
+        });
+
+        // optional auto-rotate every 10 seconds
+        setInterval(() => {
+          newsIndex = (newsIndex + 1) % newsItems.length;
+          renderNews();
+        }, 10000);
+
+        renderNews();
       }
     });
   </script>
