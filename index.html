@@ -12,22 +12,22 @@
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
-    body, html { 
-      height: 100%; 
+    body, html {
+      height: 100%;
       margin: 0;
       padding: 0;
     }
-    .site { 
-      min-height: 100vh; 
-      background: #f6f4ef; 
-      color: #0f1e2e; 
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; 
+    .site {
+      min-height: 100vh;
+      background: #f6f4ef;
+      color: #0f1e2e;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
-    .serif { 
-      font-family: "Playfair Display", Georgia, serif; 
+    .serif {
+      font-family: "Playfair Display", Georgia, serif;
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-    
+
     /* Header and Navigation */
     .header { position: fixed; inset: 0 0 auto 0; height: 56px; backdrop-filter: blur(6px); background: rgba(255,255,255,.9); border-bottom: 1px solid #e6e0d6; z-index: 50; }
     .navRow { height: 56px; display:flex; align-items:center; justify-content:space-between; }
@@ -43,32 +43,32 @@
     .mobile { display:none; border-top:1px solid #e6e0d6; background:#fff; }
     .mobile a { display:block; padding:10px 16px; font-size:14px; text-decoration:none; color:#0f1e2e; }
     @media (min-width: 768px) { .nav { display:flex; } .menuBtn { display:none; } }
-    
+
     /* Hero Section */
     .hero { position:relative; height:70vh; overflow:hidden; }
-    
-    /* This new rule styles the video */
+
+    /* Video */
     .hero-video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* This makes the video cover the area */
-      z-index: 1; /* Puts it behind the text */
+      object-fit: cover;
+      z-index: 1;
     }
-    
-    .hero .veil { 
-      position:absolute; 
-      inset:0; 
-      background:linear-gradient(to top, rgba(10,15,20,.65), rgba(10,15,20,.35), transparent); 
-      z-index: 2; /* Puts the veil on top of the video */
+
+    .hero .veil {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(10,15,20,.65), rgba(10,15,20,.35), transparent);
+      z-index: 2;
     }
-    .hero .inner { 
-      position:relative; 
-      height:100%; 
-      display:flex; 
-      align-items:flex-end; 
-      z-index: 3; /* Puts the text on top of the veil */
+    .hero .inner {
+      position:relative;
+      height:100%;
+      display:flex;
+      align-items:flex-end;
+      z-index: 3;
     }
     .tag { font-size:12px; text-transform:uppercase; letter-spacing:.25em; color:#ead7a0; }
     .h1 { margin:.25rem 0 0; font-size:38px; color:#fff; }
@@ -78,7 +78,7 @@
     .btn { border-radius:999px; padding:10px 18px; font-size:12px; text-transform:uppercase; letter-spacing:.2em; text-decoration:none; display:inline-block; }
     .btnOutline { border:1px solid #d8b45a; color:#fff; }
     .btnSolid { background:#fff; color:#0f1e2e; }
-    
+
     /* Page Sections */
     .section { padding:56px 0; }
     .center { text-align:center; max-width:720px; margin:0 auto; }
@@ -87,13 +87,13 @@
     .lead { margin-top:.75rem; color:#2f3a46; }
     .grid { display:grid; gap:16px; }
     @media (min-width:768px){ .grid.cols3 { grid-template-columns: repeat(3, 1fr); } }
-    
+
     /* Cards (for events) */
     .card { display:flex; align-items:center; justify-content:space-between; padding:20px; border:1px solid #e6e0d6; background:#fff; border-radius:14px; box-shadow:0 8px 24px rgba(15,30,46,.06); }
     .cardTitle { font-size:18px; }
     .cardMeta { font-size:14px; color:#5f6b76; }
     .label { font-size:10px; text-transform:uppercase; letter-spacing:.2em; color:#5f6b76; }
-    
+
     /* Dashboard */
     .snapshot { display:grid; gap:20px; }
     @media (min-width:768px){ .snapshot { grid-template-columns: repeat(3, 1fr); } }
@@ -105,10 +105,122 @@
     .dot.active { background:#0f1e2e; }
     .bars { display:flex; align-items:flex-end; gap:6px; margin-top:12px; }
     .barCol { width:22px; background:#B48A2C; }
-    
-    /* Footer & Visit */
+
+    /* Visit & Footer */
     .visit { border-top:1px solid #e6e0d6; background:rgba(255,255,255,.75); padding:40px 0; text-align:center; }
     .footer { border-top:1px solid #e6e0d6; padding:20px 0; }
+
+    /* --- New: Events Enhancements --- */
+
+    /* This Weekend banner */
+    .thisWeekend {
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed #d7c7a1;
+      background: #fff8e7;
+      display: none; /* shown via JS if there are weekend events */
+    }
+    .thisWeekendTitle {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: #8a6a20;
+      margin-bottom: 6px;
+    }
+    .thisWeekendList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 13px;
+    }
+    .badge {
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#f6f0e0;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#6b5a30;
+    }
+
+    /* Calendar */
+    .calendarShell {
+      margin-top:32px;
+    }
+    .calendar {
+      border-radius:14px;
+      border:1px solid #e6e0d6;
+      background:#fff;
+      box-shadow:0 8px 24px rgba(15,30,46,.06);
+      padding:16px 18px 18px;
+    }
+    .calendarHeader {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .calendarTitle {
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#5f6b76;
+    }
+    .calendarLegend {
+      font-size:11px;
+      color:#5f6b76;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .legendDot {
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:#B48A2C;
+    }
+    .calendarGrid {
+      display:grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap:4px;
+      font-size:11px;
+      margin-top:6px;
+    }
+    .calendarDow {
+      text-align:center;
+      padding:4px 0;
+      font-weight:500;
+      color:#5f6b76;
+    }
+    .calendarCell {
+      min-height:32px;
+      padding:4px 4px 6px;
+      text-align:right;
+      border-radius:6px;
+      color:#5f6b76;
+    }
+    .calendarCell.hasEvent {
+      background:#fdf7e7;
+      color:#0f1e2e;
+      border:1px solid #e6e0d6;
+      position:relative;
+    }
+    .calendarCell .eventDot {
+      position:absolute;
+      left:6px;
+      bottom:4px;
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:#B48A2C;
+    }
+    .calendarCell span {
+      font-size:11px;
+    }
   </style>
 </head>
 
@@ -143,7 +255,7 @@
     </header>
 
     <main style="padding-top: 56px;">
-      
+
       <section class="hero">
         <video autoplay loop muted playsinline class="hero-video">
           <source src="HDK.mp4" type="video/mp4">
@@ -162,6 +274,7 @@
           </div>
         </div>
       </section>
+
       <section class="section">
         <div class="container center">
           <p class="eyebrow">Our Promise</p>
@@ -170,41 +283,41 @@
         </div>
       </section>
 
+      <!-- EVENTS SECTION (now data-driven) -->
       <section id="events" class="section">
         <div class="container" style="margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between;">
           <h3 class="serif" style="font-size: 24px;">Upcoming Events</h3>
-          <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">Full Calendar</a>
+          <!-- Full calendar link scrolls to calendar shell below -->
+          <a href="#full-calendar" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">Full Calendar</a>
         </div>
-        
-        <div class="container grid cols3">
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Holiday Window Walk</div>
-              <div class="cardMeta">Downtown • 6–9 PM</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">Dec 7</div>
-            </div>
+
+        <!-- This weekend strip (populated by JS) -->
+        <div class="container">
+          <div id="this-weekend" class="thisWeekend">
+            <div class="thisWeekendTitle">This Weekend In Downtown</div>
+            <div class="thisWeekendList" id="this-weekend-list"></div>
           </div>
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Coffee & Commerce – Live</div>
-              <div class="cardMeta">234 Main • 8 AM</div>
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">Jan 18</div>
-            </div>
+        </div>
+
+        <!-- Upcoming event cards (populated by JS) -->
+        <div class="container">
+          <div class="grid cols3" id="events-grid">
+            <!-- JS will inject .card blocks here -->
           </div>
-          <div class="card">
-            <div>
-              <div class="cardTitle serif">Fairy & Lawn & Gnome</div>
-              <div class="cardMeta">Main Street • TBD</div>
+        </div>
+
+        <!-- Full calendar view -->
+        <div class="container calendarShell" id="full-calendar">
+          <div class="calendar">
+            <div class="calendarHeader">
+              <div class="calendarTitle serif" id="calendar-month-label">Event Calendar</div>
+              <div class="calendarLegend">
+                <span class="legendDot"></span>
+                <span>Day with events</span>
+              </div>
             </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">TBD</div>
+            <div class="calendarGrid" id="calendar-grid">
+              <!-- JS will build calendar here -->
             </div>
           </div>
         </div>
@@ -216,6 +329,7 @@
             <p class="eyebrow">234 Main</p>
             <h3 class="serif" style="font-size: 24px;">Host an Event</h3>
             <p class="lead">Markets, performances, civic roundtables. Tell us your concept and preferred dates; we’ll follow up with next steps.</p>
+            <!-- Replace # with your Google Form link -->
             <a href="#" class="btn btnSolid" style="margin-top: 12px; display: inline-block;">Open Form</a>
           </div>
           <div style="position: relative; overflow: hidden; border-radius: 16px; border: 1px solid #e6e0d6;">
@@ -230,12 +344,12 @@
           <span class="label">Boards & Directors</span>
         </div>
         <div class="container snapshot">
-          <div class="kpi">
+          <div class="kpi" data-metric="foot_traffic">
             <div class="label">Monthly Foot Traffic</div>
             <div class="kpiValue serif">12,480</div>
             <div class="bar"></div>
           </div>
-          <div class="kpi">
+          <div class="kpi" data-metric="volunteer_hours">
             <div class="label">Volunteer Hours</div>
             <div class="kpiValue serif">642</div>
             <div class="dots">
@@ -249,9 +363,9 @@
               <div class="dot"></div><div class="dot"></div><div class="dot"></div>
             </div>
           </div>
-          <div class="kpi">
+          <div class="kpi" data-metric="events_ytd">
             <div class="label">Events YTD</div>
-            <div class="kpiValue serif">27</div>
+            <div class="kpiValue serif" id="events-ytd-count">27</div>
             <div class="bars">
               <div class="barCol" style="height: 48px;"></div>
               <div class="barCol" style="height: 30px;"></div>
@@ -268,7 +382,7 @@
         <div class="container">
           <p class="eyebrow">Visit</p>
           <h3 class="serif" style="font-size: 24px; margin-top: 4px;">200 S Main St, Kendallville, IN 46755</h3>
-          <p class="lead" style="margin-top: 8px;">Free street parking. 30 minutes from Fort Wayne via I‑69.</p>
+          <p class="lead" style="margin-top: 8px;">Free street parking. 30 minutes from Fort Wayne via I-69.</p>
         </div>
       </section>
     </main>
@@ -286,7 +400,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      
       // --- Mobile Menu Toggle ---
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -301,18 +414,18 @@
 
       // --- Smooth Scrolling for Links ---
       const links = document.querySelectorAll('a[href^="#"]');
-      
+
       links.forEach(function(link) {
         link.addEventListener('click', function(e) {
           const href = link.getAttribute('href');
-          
+
           if (href.length <= 1) {
             return;
           }
 
-          e.preventDefault(); 
+          e.preventDefault();
           const targetElement = document.querySelector(href);
-          
+
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             mobileMenu.style.display = 'none';
@@ -323,6 +436,195 @@
       // --- Dynamic Copyright Year ---
       const copyrightElement = document.getElementById('copyright-year');
       copyrightElement.textContent = `© ${new Date().getFullYear()} Kendallville Main Street`;
+
+      // --- EVENTS: central data source ---
+      // Month/day only; year is resolved dynamically so events roll forward each year.
+      const events = [
+        {
+          id: 'holiday-window-walk',
+          title: 'Holiday Window Walk',
+          monthDay: '12-07',       // MM-DD
+          time: '6–9 PM',
+          location: 'Downtown',
+          tags: ['🎤 Entertainment', '🧡 Volunteer'],
+          sponsor: 'Downtown Merchants'
+        },
+        {
+          id: 'coffee-commerce-live',
+          title: 'Coffee & Commerce – Live',
+          monthDay: '01-18',
+          time: '8 AM',
+          location: '234 Main',
+          tags: ['☕ Business', '🌱 Student-led'],
+          sponsor: 'HDK Main Street'
+        },
+        {
+          id: 'fairy-lawn-gnome',
+          title: 'Fairy, Lawn & Gnome',
+          monthDay: '05-10',
+          time: 'TBD',
+          location: 'Main Street',
+          tags: ['🛍 Retail', '🎤 Entertainment'],
+          sponsor: 'Community Partners'
+        }
+      ];
+
+      // Resolve event date into Date object based on current date
+      const today = new Date();
+      function getEventDate(ev) {
+        const [mm, dd] = ev.monthDay.split('-').map(Number);
+        let year = today.getFullYear();
+        let d = new Date(year, mm - 1, dd);
+        if (d < today) {
+          d = new Date(year + 1, mm - 1, dd);
+        }
+        return d;
+      }
+
+      // Format date label: e.g. "Dec 7"
+      const monthShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      function getDisplayDate(ev) {
+        const d = getEventDate(ev);
+        return `${monthShort[d.getMonth()]} ${d.getDate()}`;
+      }
+
+      // Sort events by soonest date
+      const eventsWithDates = events
+        .map(ev => ({ ...ev, dateObj: getEventDate(ev) }))
+        .sort((a,b) => a.dateObj - b.dateObj);
+
+      // --- Upcoming cards (top 3) ---
+      const eventsGrid = document.getElementById('events-grid');
+      eventsGrid.innerHTML = ''; // clear any placeholder
+
+      eventsWithDates.slice(0, 3).forEach(ev => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div>
+            <div class="cardTitle serif">${ev.title}</div>
+            <div class="cardMeta">${ev.location} • ${ev.time}</div>
+            ${
+              ev.tags && ev.tags.length
+                ? `<div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;">
+                    ${ev.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+                   </div>`
+                : ''
+            }
+          </div>
+          <div style="text-align: right;">
+            <div class="label">Date</div>
+            <div class="serif" style="font-size: 18px;">${getDisplayDate(ev)}</div>
+            ${
+              ev.sponsor
+                ? `<div style="margin-top:6px; font-size:11px; color:#5f6b76;">Sponsored by<br><strong>${ev.sponsor}</strong></div>`
+                : ''
+            }
+          </div>
+        `;
+        eventsGrid.appendChild(card);
+      });
+
+      // --- This Weekend strip ---
+      const weekendBox = document.getElementById('this-weekend');
+      const weekendList = document.getElementById('this-weekend-list');
+
+      function getUpcomingWeekendRange(baseDate) {
+        const d = new Date(baseDate);
+        const day = d.getDay(); // 0=Sun, 5=Fri, 6=Sat
+        let daysUntilFriday;
+        if (day <= 5) {
+          daysUntilFriday = 5 - day;
+        } else {
+          // Sat/Sun -> next Friday
+          daysUntilFriday = (12 - day);
+        }
+        const friday = new Date(d);
+        friday.setDate(d.getDate() + daysUntilFriday);
+
+        const sunday = new Date(friday);
+        sunday.setDate(friday.getDate() + 2);
+        sunday.setHours(23,59,59,999);
+
+        return { friday, sunday };
+      }
+
+      const { friday, sunday } = getUpcomingWeekendRange(today);
+
+      const weekendEvents = eventsWithDates.filter(ev => {
+        return ev.dateObj >= friday && ev.dateObj <= sunday;
+      });
+
+      if (weekendEvents.length) {
+        weekendBox.style.display = 'block';
+        weekendList.innerHTML = weekendEvents.map(ev => {
+          return `<span><strong>${ev.title}</strong> • ${getDisplayDate(ev)} • ${ev.time}</span>`;
+        }).join('');
+      } else {
+        weekendBox.style.display = 'none';
+      }
+
+      // --- Simple Month Calendar (month of soonest event) ---
+      const calendarGrid = document.getElementById('calendar-grid');
+      const calendarMonthLabel = document.getElementById('calendar-month-label');
+
+      if (eventsWithDates.length && calendarGrid && calendarMonthLabel) {
+        const base = eventsWithDates[0].dateObj;
+        const year = base.getFullYear();
+        const month = base.getMonth();
+
+        const firstOfMonth = new Date(year, month, 1);
+        const lastOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastOfMonth.getDate();
+        const startDow = firstOfMonth.getDay(); // 0=Sun
+
+        calendarMonthLabel.textContent = `${monthShort[month]} ${year}`;
+
+        const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        calendarGrid.innerHTML = '';
+
+        // header row
+        dayNames.forEach(dn => {
+          const div = document.createElement('div');
+          div.className = 'calendarDow';
+          div.textContent = dn;
+          calendarGrid.appendChild(div);
+        });
+
+        // empty cells before first
+        for (let i = 0; i < startDow; i++) {
+          const emptyCell = document.createElement('div');
+          emptyCell.className = 'calendarCell';
+          calendarGrid.appendChild(emptyCell);
+        }
+
+        // days with events marked
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cell = document.createElement('div');
+          cell.className = 'calendarCell';
+
+          const hasEvent = eventsWithDates.some(ev =>
+            ev.dateObj.getFullYear() === year &&
+            ev.dateObj.getMonth() === month &&
+            ev.dateObj.getDate() === day
+          );
+
+          if (hasEvent) {
+            cell.classList.add('hasEvent');
+            cell.innerHTML = `<span>${day}</span><span class="eventDot"></span>`;
+          } else {
+            cell.innerHTML = `<span>${day}</span>`;
+          }
+
+          calendarGrid.appendChild(cell);
+        }
+      }
+
+      // --- Hook events count to dashboard (optional, but neat) ---
+      const eventsYtdEl = document.getElementById('events-ytd-count');
+      if (eventsYtdEl) {
+        eventsYtdEl.textContent = events.length.toString();
+      }
     });
   </script>
 
