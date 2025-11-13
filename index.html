@@ -25,7 +25,7 @@
       left: 0;
       height: 3px;
       width: 0;
-      z-index: 100; /* above header (header is 50) */
+      z-index: 100;
       background: linear-gradient(90deg, #B48A2C, #f0dba8);
       transform-origin: left center;
     }
@@ -100,7 +100,7 @@
     .grid { display:grid; gap:16px; }
     @media (min-width:768px){ .grid.cols3 { grid-template-columns: repeat(3, 1fr); } }
 
-    /* Cards (for events/news) */
+    /* Cards */
     .card { display:flex; align-items:center; justify-content:space-between; padding:20px; border:1px solid #e6e0d6; background:#fff; border-radius:14px; box-shadow:0 8px 24px rgba(15,30,46,.06); }
     .cardTitle { font-size:18px; }
     .cardMeta { font-size:14px; color:#5f6b76; }
@@ -122,7 +122,7 @@
     .visit { border-top:1px solid #e6e0d6; background:rgba(255,255,255,.75); padding:40px 0; text-align:center; }
     .footer { border-top:1px solid #e6e0d6; padding:20px 0; }
 
-    /* --- Events Enhancements --- */
+    /* Events Enhancements */
 
     /* This Weekend banner */
     .thisWeekend {
@@ -131,7 +131,7 @@
       border-radius: 14px;
       border: 1px dashed #d7c7a1;
       background: #fff8e7;
-      display: none; /* shown via JS if there are weekend events */
+      display: none;
     }
     .thisWeekendTitle {
       font-size: 12px;
@@ -159,10 +159,19 @@
       color:#6b5a30;
     }
 
-    /* Calendar */
-    .calendarShell {
-      margin-top:32px;
+    /* Events + Calendar side-by-side */
+    .eventsLayout {
+      display: grid;
+      gap: 24px;
     }
+    @media (min-width: 900px) {
+      .eventsLayout {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    /* Calendar */
     .calendar {
       border-radius:14px;
       border:1px solid #e6e0d6;
@@ -234,6 +243,119 @@
       font-size:11px;
     }
 
+    /* Events vertical carousel */
+    .eventsShell {
+      border-radius:14px;
+      border:1px solid #e6e0d6;
+      background:#fff;
+      box-shadow:0 8px 24px rgba(15,30,46,.06);
+      padding:16px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .eventsShellHeader {
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      margin-bottom:4px;
+    }
+    .eventsShellTitle {
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:#5f6b76;
+    }
+    .eventsViewport {
+      min-height:140px;
+    }
+    .eventCard {
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      box-shadow:none;
+      border-radius:10px;
+      padding:0;
+      border:0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .eventInner {
+      padding: 10px 0;
+      border-top: 1px solid #f0e7d7;
+    }
+    .eventInner:first-child {
+      border-top: none;
+    }
+
+    /* vertical slide states */
+    .eventCard.slide-out-up {
+      transform: translateY(-24px);
+      opacity: 0;
+    }
+    .eventCard.slide-out-down {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+    .eventCard.slide-in-from-down {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+    .eventCard.slide-in-from-up {
+      transform: translateY(-24px);
+      opacity: 0;
+    }
+    .eventCard.slide-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .eventsNavRow {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-top:4px;
+    }
+    .eventsNavGroup {
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    .eventsNav {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid #e6e0d6;
+      background: #fff;
+      color: #5f6b76;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0;
+      box-shadow: 0 4px 12px rgba(15,30,46,.04);
+    }
+    .eventsNav:hover {
+      background:#f6f0e0;
+    }
+    .eventsDots {
+      display:flex;
+      gap:4px;
+      align-items:center;
+    }
+    .eventsDot {
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:#d4c8b4;
+      cursor:pointer;
+    }
+    .eventsDot.active {
+      background:#0f1e2e;
+    }
+
     /* News carousel */
     .newsShell {
       display: grid;
@@ -250,7 +372,7 @@
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
-    /* Slide states */
+    /* Slide states (horizontal) */
     .newsCard.slide-out-left {
       transform: translateX(-24px);
       opacity: 0;
@@ -372,41 +494,64 @@
         </div>
       </section>
 
-      <!-- EVENTS SECTION (data-driven) -->
+      <!-- EVENTS + CALENDAR -->
       <section id="events" class="section">
-        <div class="container" style="margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between;">
-          <h3 class="serif" style="font-size: 24px;">Upcoming Events</h3>
-          <a href="#full-calendar" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">Full Calendar</a>
+        <div class="container" style="margin-bottom: 16px; display:flex; align-items:flex-end; justify-content:space-between;">
+          <h3 class="serif" style="font-size: 24px;">Events & Calendar</h3>
+          <span class="label">Live programming on Main Street</span>
         </div>
 
-        <!-- This weekend strip -->
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px;">
           <div id="this-weekend" class="thisWeekend">
             <div class="thisWeekendTitle">This Weekend In Downtown</div>
             <div class="thisWeekendList" id="this-weekend-list"></div>
           </div>
         </div>
 
-        <!-- Upcoming event cards -->
         <div class="container">
-          <div class="grid cols3" id="events-grid">
-            <!-- JS will inject .card blocks here -->
-          </div>
-        </div>
-
-        <!-- Full calendar view -->
-        <div class="container calendarShell" id="full-calendar">
-          <div class="calendar">
-            <div class="calendarHeader">
-              <div class="calendarTitle serif" id="calendar-month-label">Event Calendar</div>
-              <div class="calendarLegend">
-                <span class="legendDot"></span>
-                <span>Day with events</span>
+          <div class="eventsLayout">
+            <!-- Calendar column -->
+            <div>
+              <div class="calendar">
+                <div class="calendarHeader">
+                  <div class="calendarTitle serif" id="calendar-month-label">Event Calendar</div>
+                  <div class="calendarLegend">
+                    <span class="legendDot"></span>
+                    <span>Day with events</span>
+                  </div>
+                </div>
+                <div class="calendarGrid" id="calendar-grid">
+                  <!-- JS builds calendar -->
+                </div>
               </div>
             </div>
-            <div class="calendarGrid" id="calendar-grid">
-              <!-- JS will build calendar here -->
+
+            <!-- Events vertical carousel column -->
+            <div>
+              <div class="eventsShell">
+                <div class="eventsShellHeader">
+                  <div>
+                    <div class="eventsShellTitle">Upcoming Events</div>
+                  </div>
+                  <div style="font-size:11px; color:#5f6b76;" id="events-count-label"></div>
+                </div>
+
+                <div class="eventsViewport">
+                  <div class="eventCard" id="event-card">
+                    <!-- JS injects content -->
+                  </div>
+                </div>
+
+                <div class="eventsNavRow">
+                  <div class="eventsNavGroup">
+                    <button class="eventsNav eventsPrev" type="button" aria-label="Previous event">↑</button>
+                    <button class="eventsNav eventsNext" type="button" aria-label="Next event">↓</button>
+                  </div>
+                  <div class="eventsDots" id="events-dots"></div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -423,68 +568,18 @@
             <button class="newsNav newsPrev" type="button" aria-label="Previous story">‹</button>
 
             <div class="card newsCard" id="news-card">
-              <!-- JS will inject active story -->
+              <!-- JS injects active story -->
             </div>
 
             <button class="newsNav newsNext" type="button" aria-label="Next story">›</button>
           </div>
 
           <div class="newsDots" id="news-dots">
-            <!-- JS will inject dots -->
+            <!-- JS injects dots -->
           </div>
         </div>
       </section>
-<!-- COMMITTEE RECRUITMENT -->
-<section id="committees" class="section" style="padding: 32px 0; border-top: 1px solid #e6e0d6;">
-  <div class="container">
-    <div style="margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between;">
-      <div>
-        <p class="eyebrow">Get Involved</p>
-        <h3 class="serif" style="font-size: 24px;">Now Recruiting Committee Members</h3>
-      </div>
-      <!-- Update this link to a Google Form or PDF with role descriptions -->
-      <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">View Roles</a>
-    </div>
 
-    <div class="grid cols3">
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Promotions & Events</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Storytelling & Programming</div>
-        <p class="cardMeta" style="margin-bottom: 12px;">
-          Help shape markets, festivals, and downtown experiences that bring people to Main Street.
-        </p>
-        <span class="badge">2–3 open seats</span>
-      </div>
-
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Economic Vitality</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Business & Investment</div>
-        <p class="cardMeta" style="margin-bottom: 12px;">
-          Support small businesses, recruitment, and downtown investment strategies with HDK.
-        </p>
-        <span class="badge">Actively recruiting</span>
-      </div>
-
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Design & Placemaking</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Streetscape & Heritage</div>
-        <p class="cardMeta" style="margin-bottom: 12px;">
-          Advise on facades, signage, lighting, and projects that honor Kendallville’s historic core.
-        </p>
-        <span class="badge">Rolling openings</span>
-      </div>
-    </div>
-
-    <div style="margin-top: 16px; text-align: center;">
-      <a href="#" class="btn btnSolid" style="display: inline-block; font-size: 11px;">
-        Express Interest in Serving
-      </a>
-      <p class="cardMeta" style="margin-top: 6px; font-size: 12px;">
-        Time commitment: ~1–2 hours/month. Ideal for residents, business owners, and partners.
-      </p>
-    </div>
-  </div>
-</section>
       <!-- HOST -->
       <section id="host" class="section" style="border-top: 1px solid #e6e0d6; border-bottom: 1px solid #e6e0d6; background: rgba(255,255,255,.75);">
         <div class="container" style="display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center;">
@@ -622,7 +717,7 @@
         {
           id: 'holiday-window-walk',
           title: 'Holiday Window Walk',
-          monthDay: '12-07',       // MM-DD
+          monthDay: '12-07',
           time: '6–9 PM',
           location: 'Downtown',
           tags: ['🎤 Entertainment', '🧡 Volunteer'],
@@ -668,40 +763,6 @@
       const eventsWithDates = events
         .map(ev => ({ ...ev, dateObj: getEventDate(ev) }))
         .sort((a,b) => a.dateObj - b.dateObj);
-
-      // --- Upcoming cards (top 3) ---
-      const eventsGrid = document.getElementById('events-grid');
-      if (eventsGrid) {
-        eventsGrid.innerHTML = '';
-
-        eventsWithDates.slice(0, 3).forEach(ev => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <div>
-              <div class="cardTitle serif">${ev.title}</div>
-              <div class="cardMeta">${ev.location} • ${ev.time}</div>
-              ${
-                ev.tags && ev.tags.length
-                  ? `<div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;">
-                      ${ev.tags.map(t => `<span class="badge">${t}</span>`).join('')}
-                     </div>`
-                  : ''
-              }
-            </div>
-            <div style="text-align: right;">
-              <div class="label">Date</div>
-              <div class="serif" style="font-size: 18px;">${getDisplayDate(ev)}</div>
-              ${
-                ev.sponsor
-                  ? `<div style="margin-top:6px; font-size:11px; color:#5f6b76;">Sponsored by<br><strong>${ev.sponsor}</strong></div>`
-                  : ''
-              }
-            </div>
-          `;
-          eventsGrid.appendChild(card);
-        });
-      }
 
       // --- This Weekend strip ---
       const weekendBox = document.getElementById('this-weekend');
@@ -805,7 +866,118 @@
         eventsYtdEl.textContent = events.length.toString();
       }
 
-      // --- NEWS CAROUSEL (with slide animation) ---
+      const eventsCountLabel = document.getElementById('events-count-label');
+      if (eventsCountLabel) {
+        eventsCountLabel.textContent = `${eventsWithDates.length} in rotation`;
+      }
+
+      // --- EVENTS VERTICAL CAROUSEL ---
+      const eventCardEl = document.getElementById('event-card');
+      const eventsDotsEl = document.getElementById('events-dots');
+      const eventsPrevBtn = document.querySelector('.eventsPrev');
+      const eventsNextBtn = document.querySelector('.eventsNext');
+      let eventIndex = 0;
+
+      function renderEventContent() {
+        if (!eventCardEl) return;
+        const ev = eventsWithDates[eventIndex];
+        eventCardEl.innerHTML = `
+          <div class="eventInner">
+            <div class="label" style="margin-bottom:4px;">${getDisplayDate(ev)} • ${ev.time}</div>
+            <div class="serif" style="font-size:18px; margin-bottom:4px;">${ev.title}</div>
+            <div class="cardMeta" style="margin-bottom:8px;">${ev.location}</div>
+            ${
+              ev.tags && ev.tags.length
+                ? `<div style="margin-top:4px; display:flex; flex-wrap:wrap; gap:6px;">
+                    ${ev.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+                   </div>`
+                : ''
+            }
+            ${
+              ev.sponsor
+                ? `<div style="margin-top:8px; font-size:11px; color:#5f6b76;">Hosted with<br><strong>${ev.sponsor}</strong></div>`
+                : ''
+            }
+          </div>
+        `;
+      }
+
+      function renderEventDots() {
+        if (!eventsDotsEl) return;
+        eventsDotsEl.innerHTML = '';
+        eventsWithDates.forEach((_, idx) => {
+          const dot = document.createElement('div');
+          dot.className = 'eventsDot' + (idx === eventIndex ? ' active' : '');
+          dot.addEventListener('click', () => {
+            goToEvent(idx, idx > eventIndex ? 'next' : 'prev');
+          });
+          eventsDotsEl.appendChild(dot);
+        });
+      }
+
+      function goToEvent(targetIndex, direction) {
+        if (!eventCardEl || !eventsWithDates.length) return;
+
+        const dir = direction === 'prev' ? 'prev' : 'next';
+
+        eventCardEl.classList.remove(
+          'slide-in-from-up',
+          'slide-in-from-down',
+          'slide-active'
+        );
+        eventCardEl.classList.add(
+          dir === 'next' ? 'slide-out-up' : 'slide-out-down'
+        );
+
+        setTimeout(() => {
+          if (typeof targetIndex === 'number') {
+            eventIndex = (targetIndex + eventsWithDates.length) % eventsWithDates.length;
+          } else {
+            eventIndex =
+              dir === 'next'
+                ? (eventIndex + 1) % eventsWithDates.length
+                : (eventIndex - 1 + eventsWithDates.length) % eventsWithDates.length;
+          }
+
+          renderEventContent();
+          renderEventDots();
+
+          eventCardEl.classList.remove('slide-out-up', 'slide-out-down');
+          eventCardEl.classList.add(
+            dir === 'next' ? 'slide-in-from-down' : 'slide-in-from-up'
+          );
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              eventCardEl.classList.remove(
+                'slide-in-from-up',
+                'slide-in-from-down'
+              );
+              eventCardEl.classList.add('slide-active');
+            });
+          });
+        }, 220);
+      }
+
+      if (eventCardEl && eventsWithDates.length) {
+        renderEventContent();
+        renderEventDots();
+        eventCardEl.classList.add('slide-active');
+
+        if (eventsPrevBtn) {
+          eventsPrevBtn.addEventListener('click', () => goToEvent(null, 'prev'));
+        }
+        if (eventsNextBtn) {
+          eventsNextBtn.addEventListener('click', () => goToEvent(null, 'next'));
+        }
+
+        // optional auto-rotate
+        setInterval(() => {
+          goToEvent(null, 'next');
+        }, 12000);
+      }
+
+      // --- NEWS CAROUSEL (horizontal slide) ---
       const newsItems = [
         {
           title: "HDK Welcomes New Executive Director",
@@ -829,9 +1001,8 @@
 
       const newsCardEl = document.getElementById('news-card');
       const newsDotsEl = document.getElementById('news-dots');
-      const prevBtn = document.querySelector('.newsPrev');
-      const nextBtn = document.querySelector('.newsNext');
-
+      const newsPrevBtn = document.querySelector('.newsPrev');
+      const newsNextBtn = document.querySelector('.newsNext');
       let newsIndex = 0;
 
       function renderNewsContent() {
@@ -863,7 +1034,6 @@
 
         const dir = direction === 'prev' ? 'prev' : 'next';
 
-        // slide out current
         newsCardEl.classList.remove(
           'slide-in-from-left',
           'slide-in-from-right',
@@ -874,7 +1044,6 @@
         );
 
         setTimeout(() => {
-          // normalize index
           if (typeof targetIndex === 'number') {
             newsIndex = (targetIndex + newsItems.length) % newsItems.length;
           } else {
@@ -892,7 +1061,6 @@
             dir === 'next' ? 'slide-in-from-right' : 'slide-in-from-left'
           );
 
-          // let browser paint, then activate
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               newsCardEl.classList.remove(
@@ -902,23 +1070,21 @@
               newsCardEl.classList.add('slide-active');
             });
           });
-        }, 220); // slightly less than CSS transition for snappier timing
+        }, 220);
       }
 
       if (newsCardEl && newsItems.length) {
-        // Initial render
         renderNewsContent();
         renderNewsDots();
         newsCardEl.classList.add('slide-active');
 
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => goToNews(null, 'prev'));
+        if (newsPrevBtn) {
+          newsPrevBtn.addEventListener('click', () => goToNews(null, 'prev'));
         }
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => goToNews(null, 'next'));
+        if (newsNextBtn) {
+          newsNextBtn.addEventListener('click', () => goToNews(null, 'next'));
         }
 
-        // optional auto-rotate
         setInterval(() => {
           goToNews(null, 'next');
         }, 10000);
