@@ -52,6 +52,67 @@
     .nav { display:none; gap:24px; align-items:center; }
     .nav a { font-size:12px; text-transform:uppercase; letter-spacing:.2em; color:#0f1e2e; text-decoration:none; opacity:.9; }
     .cta { border:1px solid #B48A2C; border-radius:999px; padding:8px 16px; }
+        /* Get Involved dropdown (desktop) */
+    .navDropdownWrapper {
+      position: relative;
+    }
+
+    .navDropdownToggle {
+      border: 0;
+      background: transparent;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: #0f1e2e;
+      opacity: .9;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 0;
+    }
+
+    .navDropdownCaret {
+      font-size: 10px;
+      transition: transform 0.18s ease;
+    }
+
+    .navDropdownWrapper.is-open .navDropdownCaret {
+      transform: rotate(180deg);
+    }
+
+    .navDropdownMenu {
+      position: absolute;
+      right: 0;
+      top: 120%;
+      min-width: 190px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e6e0d6;
+      box-shadow: 0 10px 28px rgba(15,30,46,.14);
+      padding: 6px 0;
+      display: none;
+      z-index: 60;
+    }
+
+    .navDropdownWrapper.is-open .navDropdownMenu {
+      display: block;
+    }
+
+    .navDropdownMenu a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      text-decoration: none;
+      color: #0f1e2e;
+      white-space: nowrap;
+    }
+
+    .navDropdownMenu a:hover {
+      background: #f6f0e0;
+    }
     .menuBtn { border:0; background:transparent; font-size:14px; cursor: pointer; }
     .mobile { display:none; border-top:1px solid #e6e0d6; background:#fff; }
     .mobile a { display:block; padding:10px 16px; font-size:14px; text-decoration:none; color:#0f1e2e; }
@@ -448,21 +509,39 @@
           </span>
         </a>
         <nav class="nav" aria-label="Primary">
-          <a href="#events">Events</a>
-          <a href="#host">Host</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#visit" class="cta">Visit</a>
-        </nav>
+  <a href="#events">Events</a>
+  <a href="#host">Host</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#visit" class="cta">Visit</a>
+
+  <div class="navDropdownWrapper" id="nav-involved-wrapper">
+    <button class="navDropdownToggle" id="nav-involved-toggle" type="button">
+      Get Involved
+      <span class="navDropdownCaret">▾</span>
+    </button>
+    <div class="navDropdownMenu" id="nav-involved-menu" aria-label="Get involved options">
+      <a href="support.html">Donate</a>
+      <a href="committees.html">Join a Committee</a>
+      <a href="volunteer.html">Volunteer</a>
+    </div>
+  </div>
+</nav>
         <button class="menuBtn" id="mobile-menu-button">Menu</button>
       </div>
       <div class="mobile" id="mobile-menu">
-        <div class="container" style="padding: 8px 16px;">
-          <a href="#events">Events</a>
-          <a href="#host">Host</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#visit">Visit</a>
-        </div>
-      </div>
+  <div class="container" style="padding: 8px 16px;">
+    <a href="#events">Events</a>
+    <a href="#host">Host</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#visit">Visit</a>
+
+    <div style="border-top:1px solid #e6e0d6; margin:8px 0 6px;"></div>
+    <p class="eyebrow" style="margin:6px 0 4px; font-size:10px;">Get Involved</p>
+    <a href="support.html">Donate</a>
+    <a href="committees.html">Join a Committee</a>
+    <a href="volunteer.html">Volunteer</a>
+  </div>
+</div>
     </header>
 
     <main style="padding-top: 56px;">
@@ -773,7 +852,34 @@
           mobileMenu.style.display = 'block';
         }
       });
+      // --- Get Involved dropdown (desktop) ---
+      const involvedWrapper = document.getElementById('nav-involved-wrapper');
+      const involvedToggle = document.getElementById('nav-involved-toggle');
+      const involvedMenu = document.getElementById('nav-involved-menu');
 
+      if (involvedWrapper && involvedToggle && involvedMenu) {
+        involvedToggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const isOpen = involvedWrapper.classList.contains('is-open');
+          if (isOpen) {
+            involvedWrapper.classList.remove('is-open');
+          } else {
+            involvedWrapper.classList.add('is-open');
+          }
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!involvedWrapper.contains(e.target)) {
+            involvedWrapper.classList.remove('is-open');
+          }
+        });
+
+        // Close on scroll to avoid it floating in space
+        window.addEventListener('scroll', function () {
+          involvedWrapper.classList.remove('is-open');
+        });
+      }
       // --- Smooth Scrolling for Links ---
       const links = document.querySelectorAll('a[href^="#"]');
 
