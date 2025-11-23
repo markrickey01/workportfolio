@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historic Downtown Kendallville</title>
+  <title>Historic Downtown Kendallville | Main Street Economic Development</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,15 @@
     .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
 
     /* Header and Navigation */
-    .header { position: fixed; inset: 0 0 auto 0; height: 56px; backdrop-filter: blur(6px); background: rgba(255,255,255,.9); border-bottom: 1px solid #e6e0d6; z-index: 50; }
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 56px;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.9);
+      border-bottom: 1px solid #e6e0d6;
+      z-index: 50;
+    }
     .navRow { height: 56px; display:flex; align-items:center; justify-content:space-between; }
     .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; }
     .monogram { width:32px; height:32px; display:grid; place-items:center; border-radius:999px; border:1px solid #B48A2C; color:#B48A2C; font-weight:600; }
@@ -50,13 +58,20 @@
     .brandMain { font-size:18px; letter-spacing:.02em; }
     .brandSub { font-size:10px; text-transform:uppercase; letter-spacing:.2em; color:#5f6b76; }
     .nav { display:none; gap:24px; align-items:center; }
-    .nav a { font-size:12px; text-transform:uppercase; letter-spacing:.2em; color:#0f1e2e; text-decoration:none; opacity:.9; }
+    .nav a {
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#0f1e2e;
+      text-decoration:none;
+      opacity:.9;
+    }
     .cta { border:1px solid #B48A2C; border-radius:999px; padding:8px 16px; }
-        /* Get Involved dropdown (desktop) */
+
+    /* Get Involved dropdown (desktop) */
     .navDropdownWrapper {
       position: relative;
     }
-
     .navDropdownToggle {
       border: 0;
       background: transparent;
@@ -71,16 +86,13 @@
       gap: 4px;
       padding: 4px 0;
     }
-
     .navDropdownCaret {
       font-size: 10px;
       transition: transform 0.18s ease;
     }
-
     .navDropdownWrapper.is-open .navDropdownCaret {
       transform: rotate(180deg);
     }
-
     .navDropdownMenu {
       position: absolute;
       right: 0;
@@ -94,11 +106,9 @@
       display: none;
       z-index: 60;
     }
-
     .navDropdownWrapper.is-open .navDropdownMenu {
       display: block;
     }
-
     .navDropdownMenu a {
       display: block;
       padding: 8px 14px;
@@ -109,18 +119,19 @@
       color: #0f1e2e;
       white-space: nowrap;
     }
-
     .navDropdownMenu a:hover {
       background: #f6f0e0;
     }
+
     .menuBtn { border:0; background:transparent; font-size:14px; cursor: pointer; }
     .mobile { display:none; border-top:1px solid #e6e0d6; background:#fff; }
     .mobile a { display:block; padding:10px 16px; font-size:14px; text-decoration:none; color:#0f1e2e; }
-    @media (min-width: 768px) { .nav { display:flex; } .menuBtn { display:none; } }
+    @media (min-width: 768px) { .nav { display:flex; } .menuBtn { display:none; }
+
+    }
 
     /* Hero Section */
     .hero { position:relative; height:70vh; overflow:hidden; }
-
     .hero-video {
       position: absolute;
       inset: 0;
@@ -129,7 +140,6 @@
       object-fit: cover;
       z-index: 1;
     }
-
     .hero .veil {
       position:absolute;
       inset:0;
@@ -148,9 +158,17 @@
     @media (min-width:640px){ .h1 { font-size:48px; } }
     .heroSub { margin-top:.75rem; color:rgba(255,255,255,.9); max-width:640px; }
     .btnRow { margin-top:1rem; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn { border-radius:999px; padding:10px 18px; font-size:12px; text-transform:uppercase; letter-spacing:.2em; text-decoration:none; display:inline-block; }
-    .btnOutline { border:1px solid #d8b45a; color:#fff; }
-    .btnSolid { background:#fff; color:#0f1e2e; }
+    .btn {
+      border-radius:999px;
+      padding:10px 18px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btnOutline { border:1px solid #d8b45a; color:#fff; background: transparent; }
+    .btnSolid { background:#fff; color:#0f1e2e; border:1px solid #fff; }
 
     /* Page Sections */
     .section { padding:56px 0; }
@@ -162,15 +180,35 @@
     @media (min-width:768px){ .grid.cols3 { grid-template-columns: repeat(3, 1fr); } }
 
     /* Cards */
-    .card { display:flex; align-items:center; justify-content:space-between; padding:20px; border:1px solid #e6e0d6; background:#fff; border-radius:14px; box-shadow:0 8px 24px rgba(15,30,46,.06); }
+    .card {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px;
+      border:1px solid #e6e0d6;
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(15,30,46,.06);
+    }
     .cardTitle { font-size:18px; }
     .cardMeta { font-size:14px; color:#5f6b76; }
-    .label { font-size:10px; text-transform:uppercase; letter-spacing:.2em; color:#5f6b76; }
+    .label {
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#5f6b76;
+    }
 
     /* Dashboard */
     .snapshot { display:grid; gap:20px; }
     @media (min-width:768px){ .snapshot { grid-template-columns: repeat(3, 1fr); } }
-    .kpi { border:1px solid #e6e0d6; background:#fff; border-radius:14px; padding:24px; box-shadow:0 8px 24px rgba(15,30,46,.06); }
+    .kpi {
+      border:1px solid #e6e0d6;
+      background:#fff;
+      border-radius:14px;
+      padding:24px;
+      box-shadow:0 8px 24px rgba(15,30,46,.06);
+    }
     .kpiValue { margin-top:4px; font-size:30px; }
     .bar { height:64px; background:linear-gradient(90deg,#f0dba8,#d7b25b); margin-top:12px; }
     .dots { display:grid; grid-template-columns: repeat(6, 1fr); gap:4px; margin-top:12px; }
@@ -184,8 +222,6 @@
     .footer { border-top:1px solid #e6e0d6; padding:20px 0; }
 
     /* Events Enhancements */
-
-    /* This Weekend banner */
     .thisWeekend {
       margin: 0 0 16px;
       padding: 14px 16px;
@@ -220,7 +256,6 @@
       color:#6b5a30;
     }
 
-    /* Events + Calendar side-by-side */
     .eventsLayout {
       display: grid;
       gap: 24px;
@@ -232,7 +267,6 @@
       }
     }
 
-    /* Calendar */
     .calendar {
       border-radius:14px;
       border:1px solid #e6e0d6;
@@ -300,11 +334,8 @@
       border-radius:999px;
       background:#B48A2C;
     }
-    .calendarCell span {
-      font-size:11px;
-    }
+    .calendarCell span { font-size:11px; }
 
-    /* Events vertical carousel */
     .eventsShell {
       border-radius:14px;
       border:1px solid #e6e0d6;
@@ -327,9 +358,7 @@
       letter-spacing:.18em;
       color:#5f6b76;
     }
-    .eventsViewport {
-      min-height:140px;
-    }
+    .eventsViewport { min-height:140px; }
     .eventCard {
       flex-direction: column;
       align-items: flex-start;
@@ -346,11 +375,8 @@
       padding: 10px 0;
       border-top: 1px solid #f0e7d7;
     }
-    .eventInner:first-child {
-      border-top: none;
-    }
+    .eventInner:first-child { border-top: none; }
 
-    /* vertical slide states */
     .eventCard.slide-out-up {
       transform: translateY(-24px);
       opacity: 0;
@@ -398,14 +424,8 @@
       padding: 0;
       box-shadow: 0 4px 12px rgba(15,30,46,.04);
     }
-    .eventsNav:hover {
-      background:#f6f0e0;
-    }
-    .eventsDots {
-      display:flex;
-      gap:4px;
-      align-items:center;
-    }
+    .eventsNav:hover { background:#f6f0e0; }
+    .eventsDots { display:flex; gap:4px; align-items:center; }
     .eventsDot {
       width:6px;
       height:6px;
@@ -413,9 +433,7 @@
       background:#d4c8b4;
       cursor:pointer;
     }
-    .eventsDot.active {
-      background:#0f1e2e;
-    }
+    .eventsDot.active { background:#0f1e2e; }
 
     /* News carousel */
     .newsShell {
@@ -424,7 +442,6 @@
       gap: 8px;
       align-items: stretch;
     }
-
     .newsCard {
       flex-direction: column;
       align-items: flex-start;
@@ -432,8 +449,6 @@
       overflow: hidden;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
-
-    /* Slide states (horizontal) */
     .newsCard.slide-out-left {
       transform: translateX(-24px);
       opacity: 0;
@@ -454,7 +469,6 @@
       transform: translateX(0);
       opacity: 1;
     }
-
     .newsNav {
       width: 32px;
       height: 32px;
@@ -469,18 +483,13 @@
       padding: 0;
       box-shadow: 0 4px 12px rgba(15,30,46,.06);
     }
-
-    .newsNav:hover {
-      background: #f6f0e0;
-    }
-
+    .newsNav:hover { background: #f6f0e0; }
     .newsDots {
       margin-top: 10px;
       display: flex;
       justify-content: center;
       gap: 6px;
     }
-
     .newsDot {
       width: 7px;
       height: 7px;
@@ -488,10 +497,7 @@
       background: #d4c8b4;
       cursor: pointer;
     }
-
-    .newsDot.active {
-      background: #0f1e2e;
-    }
+    .newsDot.active { background: #0f1e2e; }
   </style>
 </head>
 
@@ -505,47 +511,49 @@
           <span class="monogram serif">K</span>
           <span class="brandTitle">
             <span class="brandMain serif">Historic Downtown</span>
-            <span class="brandSub">Kendallville</span>
+            <span class="brandSub">Kendallville · Main Street</span>
           </span>
         </a>
         <nav class="nav" aria-label="Primary">
-  <a href="#events">Events</a>
-  <a href="#host">Host</a>
-  <a href="#dashboard">Dashboard</a>
-  <a href="#visit" class="cta">Visit</a>
+          <a href="#business">Business</a>
+          <a href="#events">Events</a>
+          <a href="#dashboard">Impact</a>
+          <a href="#visit" class="cta">Visit</a>
 
-  <div class="navDropdownWrapper" id="nav-involved-wrapper">
-    <button class="navDropdownToggle" id="nav-involved-toggle" type="button">
-      Get Involved
-      <span class="navDropdownCaret">▾</span>
-    </button>
-    <div class="navDropdownMenu" id="nav-involved-menu" aria-label="Get involved options">
-      <a href="support.html">Donate</a>
-      <a href="<a href="committees/index.html">Join a Committee</a>
-      <a href="volunteer.html">Volunteer</a>
-    </div>
-  </div>
-</nav>
+          <div class="navDropdownWrapper" id="nav-involved-wrapper">
+            <button class="navDropdownToggle" id="nav-involved-toggle" type="button">
+              Get Involved
+              <span class="navDropdownCaret">▾</span>
+            </button>
+            <div class="navDropdownMenu" id="nav-involved-menu" aria-label="Get involved options">
+              <a href="support.html">Donate</a>
+              <a href="committees/index.html">Join a Committee</a>
+              <a href="volunteer.html">Volunteer</a>
+            </div>
+          </div>
+        </nav>
         <button class="menuBtn" id="mobile-menu-button">Menu</button>
       </div>
-      <div class="mobile" id="mobile-menu">
-  <div class="container" style="padding: 8px 16px;">
-    <a href="#events">Events</a>
-    <a href="#host">Host</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#visit">Visit</a>
 
-    <div style="border-top:1px solid #e6e0d6; margin:8px 0 6px;"></div>
-    <p class="eyebrow" style="margin:6px 0 4px; font-size:10px;">Get Involved</p>
-    <a href="support.html">Donate</a>
-    <a href="<a href="ccommittees/index.html">Join a Committee</a>
-    <a href="volunteer.html">Volunteer</a>
-  </div>
-</div>
+      <div class="mobile" id="mobile-menu">
+        <div class="container" style="padding: 8px 16px;">
+          <a href="#business">Business</a>
+          <a href="#events">Events</a>
+          <a href="#dashboard">Impact</a>
+          <a href="#visit">Visit</a>
+
+          <div style="border-top:1px solid #e6e0d6; margin:8px 0 6px;"></div>
+          <p class="eyebrow" style="margin:6px 0 4px; font-size:10px;">Get Involved</p>
+          <a href="support.html">Donate</a>
+          <a href="committees/index.html">Join a Committee</a>
+          <a href="volunteer.html">Volunteer</a>
+        </div>
+      </div>
     </header>
 
     <main style="padding-top: 56px;">
 
+      <!-- HERO -->
       <section class="hero">
         <video autoplay loop muted playsinline class="hero-video">
           <source src="HDK.mp4" type="video/mp4">
@@ -554,29 +562,97 @@
         <div class="veil"></div>
         <div class="container inner" style="padding-bottom: 64px;">
           <div style="max-width: 680px;">
-            <p class="tag">Est. 1849 | William Mitchell</p>
+            <p class="tag">Indiana Main Street · Nonprofit Public Trust</p>
             <h1 class="h1 serif">Historic Downtown Kendallville</h1>
-            <p class="heroSub">Boutique-community experiences in a walkable historic district. Markets, workspace, and culture that feel handcrafted.</p>
+            <p class="heroSub">
+              A designated Main Street district aligning design, promotion, organization, and economic vitality
+              to drive investment, small-business growth, and year-round activity on Main Street.
+            </p>
             <div class="btnRow">
-              <a href="#events" class="btn btnOutline">See Events</a>
-              <a href="#host" class="btn btnSolid">Host an Event</a>
+              <a href="#business" class="btn btnSolid">Explore Business Opportunities</a>
+              <a href="#events" class="btn btnOutline">View Upcoming Programming</a>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- PROMISE / POSITIONING -->
       <section class="section">
         <div class="container center">
-          <p class="eyebrow">Our Promise</p>
-          <h2 class="h2 serif">Stewardship of place — investment in people</h2>
-          <p class="lead">We preserve the character of Main Street Kendallville while building modern experiences: seasonal markets, creative workspace, and cultural programming.</p>
+          <p class="eyebrow">Mission</p>
+          <h2 class="h2 serif">Stewardship of place. Measurable economic impact.</h2>
+          <p class="lead">
+            Historic Downtown Kendallville (HDK) serves as the coordinating body for Main Street revitalization —
+            bringing together property owners, businesses, residents, financial partners, and local government to
+            strengthen the historic core through structured investment, data-informed decisions, and intentional programming.
+          </p>
+        </div>
+      </section>
+
+      <!-- BUSINESS & INVESTMENT -->
+      <section id="business" class="section" style="border-top:1px solid #e6e0d6; background:#fff;">
+        <div class="container" style="display:grid; gap:24px; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); align-items:flex-start;">
+          <div>
+            <p class="eyebrow">Business & Investment</p>
+            <h3 class="serif" style="font-size:24px;">Bring your next venture to Main Street</h3>
+            <p class="lead" style="margin-top:8px;">
+              HDK functions as a front door for investment in the district. We coordinate property owners, lenders,
+              builders, and support partners to help new and expanding businesses make informed, confident decisions.
+            </p>
+
+            <div class="grid" style="margin-top:18px; gap:12px;">
+              <div class="card" style="flex-direction:column; align-items:flex-start;">
+                <div class="label" style="margin-bottom:4px;">Site Selection</div>
+                <div class="serif" style="font-size:18px; margin-bottom:4px;">Available Properties</div>
+                <p class="cardMeta">
+                  Curated downtown storefronts and upper-story spaces suitable for retail, food & beverage, office,
+                  and creative uses.
+                </p>
+              </div>
+
+              <div class="card" style="flex-direction:column; align-items:flex-start;">
+                <div class="label" style="margin-bottom:4px;">Partners</div>
+                <div class="serif" style="font-size:18px; margin-bottom:4px;">Banking & Capital</div>
+                <p class="cardMeta">
+                  Introductions to local lenders, incentives, and technical assistance partners aligned with your project scope.
+                </p>
+              </div>
+
+              <div class="card" style="flex-direction:column; align-items:flex-start;">
+                <div class="label" style="margin-bottom:4px;">Support</div>
+                <div class="serif" style="font-size:18px; margin-bottom:4px;">Onboarding & Launch</div>
+                <p class="cardMeta">
+                  Coordination of ribbon cuttings, promotion, and integration into the downtown business network.
+                </p>
+              </div>
+            </div>
+
+            <a href="mailto:info@kendallvillemainstreet.com?subject=Downtown%20Business%20Inquiry" class="btn btnOutline" style="margin-top:14px; display:inline-block;">
+              Start a Conversation
+            </a>
+          </div>
+
+          <div style="border-radius:16px; border:1px solid #e6e0d6; padding:18px; background:#fdf7e7;">
+            <div class="label" style="margin-bottom:8px;">231 Main · Co-Working & Innovation Hub</div>
+            <h4 class="serif" style="font-size:18px; margin:0 0 8px;">A launch pad for new ideas</h4>
+            <p class="cardMeta" style="margin-bottom:10px;">
+              231 Main serves as HDK’s working hub for entrepreneurs, remote workers, and project teams. It can also host
+              strategy sessions, lender meetings, and small-format activations tied to new business development.
+            </p>
+            <a href="https://www.kendallvillecoworking.com/" class="btn btnSolid" style="display:inline-block; margin-top:4px;">
+              Learn About 231 Main
+            </a>
+          </div>
         </div>
       </section>
 
       <!-- EVENTS + CALENDAR -->
       <section id="events" class="section">
         <div class="container" style="margin-bottom: 16px; display:flex; align-items:flex-end; justify-content:space-between;">
-          <h3 class="serif" style="font-size: 24px;">Events & Calendar</h3>
+          <div>
+            <p class="eyebrow">Programming</p>
+            <h3 class="serif" style="font-size: 24px;">Events & Activation Calendar</h3>
+          </div>
           <span class="label">Live programming on Main Street</span>
         </div>
 
@@ -639,8 +715,13 @@
       <section id="news" class="section" style="padding: 32px 0; border-top: 1px solid #e6e0d6;">
         <div class="container">
           <div style="margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between;">
-            <h3 class="serif" style="font-size: 24px;">News & Announcements</h3>
-            <a href="news/index.html" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">View All</a>
+            <div>
+              <p class="eyebrow">Updates</p>
+              <h3 class="serif" style="font-size: 24px;">News & Announcements</h3>
+            </div>
+            <a href="news/index.html" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">
+              View All
+            </a>
           </div>
 
           <div class="newsShell">
@@ -658,76 +739,82 @@
           </div>
         </div>
       </section>
-<!-- COMMITTEE RECRUITMENT -->
-<section id="committees" class="section" style="padding: 32px 0; border-top: 1px solid #e6e0d6;">
-  <div class="container">
-    <div style="margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between;">
-      <div>
-        <p class="eyebrow">Get Involved</p>
-        <h3 class="serif" style="font-size: 24px;">Now Recruiting Committee Members</h3>
-        <p class="lead" style="margin-top: 8px; max-width: 540px; font-size: 14px;">
-          Help shape the future of Historic Downtown Kendallville. We’re seeking working-committee members who can show up,
-          make decisions, and move projects forward.
-        </p>
-      </div>
-      <!-- Update this link to a roles PDF or page -->
-      <a href="committees" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">
-        View Role Descriptions
-      </a>
-    </div>
 
-    <div class="grid cols3" style="margin-bottom: 16px;">
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Promotions & Events</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Storytelling & Activation</div>
-        <p class="cardMeta" style="margin-bottom: 10px;">
-          Plan markets, festivals, and campaigns that bring people to Main Street year-round.
-        </p>
-        <span class="badge">2–3 open seats</span>
-      </div>
+      <!-- COMMITTEE RECRUITMENT -->
+      <section id="committees" class="section" style="padding: 32px 0; border-top: 1px solid #e6e0d6;">
+        <div class="container">
+          <div style="margin-bottom: 16px; display: flex; align-items: flex-end; justify-content: space-between;">
+            <div>
+              <p class="eyebrow">Get Involved</p>
+              <h3 class="serif" style="font-size: 24px;">Now Recruiting Committee Members</h3>
+              <p class="lead" style="margin-top: 8px; max-width: 540px; font-size: 14px;">
+                Help shape the future of Historic Downtown Kendallville. We’re seeking working-committee members who can show up,
+                make decisions, and move projects forward.
+              </p>
+            </div>
+            <a href="committees/index.html" style="font-size: 12px; text-transform: uppercase; letter-spacing: .2em; text-decoration: underline; text-underline-offset: 8px;">
+              View Role Descriptions
+            </a>
+          </div>
 
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Economic Vitality</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Business & Investment</div>
-        <p class="cardMeta" style="margin-bottom: 10px;">
-          Support small business needs, recruitment, and funding strategies with HDK and partners.
-        </p>
-        <span class="badge">Actively recruiting</span>
-      </div>
+          <div class="grid cols3" style="margin-bottom: 16px;">
+            <div class="card" style="flex-direction: column; align-items: flex-start;">
+              <div class="label" style="margin-bottom: 6px;">Promotions & Events</div>
+              <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Storytelling & Activation</div>
+              <p class="cardMeta" style="margin-bottom: 10px;">
+                Plan markets, festivals, and campaigns that bring people to Main Street year-round.
+              </p>
+              <span class="badge">2–3 open seats</span>
+            </div>
 
-      <div class="card" style="flex-direction: column; align-items: flex-start;">
-        <div class="label" style="margin-bottom: 6px;">Design & Placemaking</div>
-        <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Streetscape & Heritage</div>
-        <p class="cardMeta" style="margin-bottom: 10px;">
-          Advise on facades, signage, lighting, and projects that respect Kendallville’s historic core.
-        </p>
-        <span class="badge">Rolling openings</span>
-      </div>
-    </div>
+            <div class="card" style="flex-direction: column; align-items: flex-start;">
+              <div class="label" style="margin-bottom: 6px;">Economic Vitality</div>
+              <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Business & Investment</div>
+              <p class="cardMeta" style="margin-bottom: 10px;">
+                Support small business needs, recruitment, and funding strategies with HDK and partners.
+              </p>
+              <span class="badge">Actively recruiting</span>
+            </div>
 
-    <div style="text-align: center;">
-      <!-- Point this to a Google Form for interest submissions -->
-      <a href="#" class="btn btnSolid" style="display: inline-block; font-size: 11px;">
-        Express Interest in Serving
-      </a>
-      <p class="cardMeta" style="margin-top: 6px; font-size: 12px;">
-        Time commitment: ~1–2 hours/month. Ideal for residents, business owners, and regional partners.
-      </p>
-    </div>
-  </div>
-</section>
+            <div class="card" style="flex-direction: column; align-items: flex-start;">
+              <div class="label" style="margin-bottom: 6px;">Design & Placemaking</div>
+              <div class="serif" style="font-size: 18px; margin-bottom: 6px;">Streetscape & Heritage</div>
+              <p class="cardMeta" style="margin-bottom: 10px;">
+                Advise on facades, signage, lighting, and projects that respect Kendallville’s historic core.
+              </p>
+              <span class="badge">Rolling openings</span>
+            </div>
+          </div>
 
-      <!-- HOST -->
+          <div style="text-align: center;">
+            <a href="volunteer.html" class="btn btnSolid" style="display: inline-block; font-size: 11px;">
+              Express Interest in Serving
+            </a>
+            <p class="cardMeta" style="margin-top: 6px; font-size: 12px;">
+              Time commitment: ~1–2 hours/month. Ideal for residents, business owners, and regional partners.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOST / 231 MAIN -->
       <section id="host" class="section" style="border-top: 1px solid #e6e0d6; border-bottom: 1px solid #e6e0d6; background: rgba(255,255,255,.75);">
         <div class="container" style="display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center;">
           <div>
             <p class="eyebrow">231 Main</p>
-            <h3 class="serif" style="font-size: 24px;">Host an Event</h3>
-            <p class="lead">Markets, performances, civic roundtables. Tell us your concept and preferred dates; we’ll follow up with next steps.</p>
-            <a href="https://www.kendallvillecoworking.com/" class="btn btnSolid" style="margin-top: 12px; display: inline-block;">Book Your Event Today!</a>
+            <h3 class="serif" style="font-size: 24px;">Host a Meeting or Program</h3>
+            <p class="lead">
+              Markets, performances, civic roundtables, and working sessions. Share your concept and preferred dates;
+              we’ll follow up with next steps and alignment to downtown goals.
+            </p>
+            <a href="https://www.kendallvillecoworking.com/" class="btn btnSolid" style="margin-top: 12px; display: inline-block;">
+              Book 231 Main
+            </a>
           </div>
           <div style="position: relative; overflow: hidden; border-radius: 16px; border: 1px solid #e6e0d6;">
-            <img src="https://images.unsplash.com/photo-1518593922543-8b1ef1142e5e?q=80&w=1400&auto=format&fit=crop" alt="Workspace and studio" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src="https://images.unsplash.com/photo-1518593922543-8b1ef1142e5e?q=80&w=1400&auto=format&fit=crop"
+                 alt="Workspace and studio"
+                 style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
         </div>
       </section>
@@ -735,8 +822,11 @@
       <!-- DASHBOARD -->
       <section id="dashboard" class="section">
         <div class="container" style="margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between;">
-          <h3 class="serif" style="font-size: 24px;">Downtown Snapshot</h3>
-          <span class="label">Boards & Directors</span>
+          <div>
+            <p class="eyebrow">Reporting</p>
+            <h3 class="serif" style="font-size: 24px;">Downtown Snapshot</h3>
+          </div>
+          <span class="label">For boards, partners & funders</span>
         </div>
         <div class="container snapshot">
           <div class="kpi" data-metric="foot_traffic">
@@ -772,49 +862,39 @@
           </div>
         </div>
       </section>
-<!-- ========================= -->
-<!-- SUPPORT / GET INVOLVED -->
-<!-- Place this ABOVE the #visit section -->
-<!-- ========================= -->
 
-<section id="support" class="section" style="padding:48px 0; background:#fff8e7; border-top:1px solid #e6e0d6;">
-  <div class="container center">
-    <p class="eyebrow">Support</p>
-    <h3 class="serif" style="font-size:24px;">Help Us Build a Stronger Downtown</h3>
+      <!-- SUPPORT / GET INVOLVED -->
+      <section id="support" class="section" style="padding:48px 0; background:#fff8e7; border-top:1px solid #e6e0d6;">
+        <div class="container center">
+          <p class="eyebrow">Support</p>
+          <h3 class="serif" style="font-size:24px;">Help Us Build a Stronger Downtown</h3>
 
-    <p class="lead" style="max-width:600px; margin:12px auto;">
-      Your support directly fuels reinvestment, events, beautification, and long-term economic development in Historic Downtown Kendallville.
-    </p>
+          <p class="lead" style="max-width:600px; margin:12px auto;">
+            Your support directly fuels reinvestment, events, beautification, and long-term economic development
+            in Historic Downtown Kendallville.
+          </p>
 
-    <!-- BUTTON ROW — ALL FIXED AND MATCHING -->
-    <div style="margin-top:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px;">
-
-      <!-- Solid gold button (primary action) -->
-      <a href="support.html" class="btn btnSolid" 
-   style="border:1px solid #B48A2C; text-decoration:none; color:#0f1e2e;">
-  Donate
-</a>
-
-      <!-- Subtle outline buttons (secondary actions) -->
-      <a href="committees/" class="btn btnOutline" style="text-decoration:none; color:#0f1e2e;">
-        Join a Committee
-      </a>
-
-      <a href="volunteer.html" class="btn btnOutline" style="text-decoration:none; color:#0f1e2e;">
-        Volunteer
-      </a>
-
-    </div>
-  </div>
-</section>
-
+          <div style="margin-top:20px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px;">
+            <a href="support.html" class="btn btnSolid"
+               style="border:1px solid #B48A2C; text-decoration:none; color:#0f1e2e;">
+              Donate
+            </a>
+            <a href="committees/index.html" class="btn btnOutline" style="text-decoration:none; color:#0f1e2e;">
+              Join a Committee
+            </a>
+            <a href="volunteer.html" class="btn btnOutline" style="text-decoration:none; color:#0f1e2e;">
+              Volunteer
+            </a>
+          </div>
+        </div>
+      </section>
 
       <!-- VISIT -->
       <section id="visit" class="visit">
         <div class="container">
           <p class="eyebrow">Visit</p>
           <h3 class="serif" style="font-size: 24px; margin-top: 4px;">200 S Main St, Kendallville, IN 46755</h3>
-          <p class="lead" style="margin-top: 8px;">Free street parking. 30 minutes from Fort Wayne via I-69.</p>
+          <p class="lead" style="margin-top: 8px;">Free street parking. Approximately 30 minutes from Fort Wayne via I-69.</p>
         </div>
       </section>
     </main>
@@ -859,6 +939,7 @@
           mobileMenu.style.display = 'block';
         }
       });
+
       // --- Get Involved dropdown (desktop) ---
       const involvedWrapper = document.getElementById('nav-involved-wrapper');
       const involvedToggle = document.getElementById('nav-involved-toggle');
@@ -875,32 +956,26 @@
           }
         });
 
-        // Close when clicking outside
         document.addEventListener('click', function (e) {
           if (!involvedWrapper.contains(e.target)) {
             involvedWrapper.classList.remove('is-open');
           }
         });
 
-        // Close on scroll to avoid it floating in space
         window.addEventListener('scroll', function () {
           involvedWrapper.classList.remove('is-open');
         });
       }
+
       // --- Smooth Scrolling for Links ---
       const links = document.querySelectorAll('a[href^="#"]');
 
       links.forEach(function(link) {
         link.addEventListener('click', function(e) {
           const href = link.getAttribute('href');
-
-          if (href.length <= 1) {
-            return;
-          }
-
+          if (href.length <= 1) return;
           e.preventDefault();
           const targetElement = document.querySelector(href);
-
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             mobileMenu.style.display = 'none';
@@ -928,7 +1003,7 @@
           title: 'Coffee & Commerce – Live',
           monthDay: '01-18',
           time: '8 AM',
-          location: '234 Main',
+          location: '231 Main',
           tags: ['☕ Business', '🌱 Student-led'],
           sponsor: 'HDK Main Street'
         },
@@ -1023,7 +1098,6 @@
         const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
         calendarGrid.innerHTML = '';
 
-        // header row
         dayNames.forEach(dn => {
           const div = document.createElement('div');
           div.className = 'calendarDow';
@@ -1031,14 +1105,12 @@
           calendarGrid.appendChild(div);
         });
 
-        // empty cells before first
         for (let i = 0; i < startDow; i++) {
           const emptyCell = document.createElement('div');
           emptyCell.className = 'calendarCell';
           calendarGrid.appendChild(emptyCell);
         }
 
-        // days with events marked
         for (let day = 1; day <= daysInMonth; day++) {
           const cell = document.createElement('div');
           cell.className = 'calendarCell';
@@ -1171,7 +1243,6 @@
           eventsNextBtn.addEventListener('click', () => goToEvent(null, 'next'));
         }
 
-        // optional auto-rotate
         setInterval(() => {
           goToEvent(null, 'next');
         }, 12000);
@@ -1183,19 +1254,19 @@
           title: "HDK Welcomes New Executive Director",
           date: "Nov 12, 2025",
           summary: "Kendallville Main Street announces new leadership to advance downtown revitalization.",
-          link: "#"
+          link: "news/index.html"
         },
         {
           title: "Coffee & Commerce Launches New Podcast Studio",
           date: "Nov 4, 2025",
           summary: "Local leaders, entrepreneurs, and students collaborate on storytelling and economic insights.",
-          link: "#"
+          link: "news/index.html"
         },
         {
           title: "Holiday Window Walk Applications Open",
           date: "Oct 28, 2025",
           summary: "Businesses can now register to participate in the 2025 Holiday Window Walk.",
-          link: "#"
+          link: "news/index.html"
         }
       ];
 
@@ -1291,6 +1362,5 @@
       }
     });
   </script>
-
 </body>
 </html>
